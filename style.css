@@ -1,6 +1,8 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: white;
 }
 
 nav {
@@ -11,6 +13,8 @@ nav {
     align-items: center;
     position: sticky;
     top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .logo {
@@ -47,4 +51,51 @@ nav a {
     background-color: red;
     padding: 7px 14px;
     border-radius: 5px;
+}
+
+.top {
+    background-image: linear-gradient(to bottom, transparent, black), url(./images/Sinners.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 0;
+    height: 100vh;
+}
+
+.details {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    padding: 20px;
+}
+
+.highlighted {
+    display: inline-block;
+    font-size: large;
+    background-color: red;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.MD {
+    display: flex;
+    gap: 1rem;
+}
+
+.Button {
+    background-color: red;
+    padding: 7px 14px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Button-outlined {
+    border: 2px solid white;
+    padding: 7px 14px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
