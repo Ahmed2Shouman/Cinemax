@@ -208,16 +208,14 @@ nav a {
 footer {
     background-color: black;
     color: white;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-align: center;
 }
 
-footer div {
-    flex: 1 1 250px;
-    margin: 10px;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 100px;
+    padding-right: 250px;
 }
 
 footer h1 {
@@ -230,6 +228,7 @@ footer p, footer a {
     font-size: 0.9rem;
     line-height: 1.6;
     text-decoration: none;
+    max-width: 350px;
 }
 
 footer a {
@@ -251,4 +250,9 @@ footer > p {
     text-align: center;
     font-size: 0.8rem;
     color: #ccc;
+}
+
+.cr {
+    justify-self: center;
+    margin-bottom: 50px;
 }
