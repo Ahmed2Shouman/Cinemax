@@ -15,6 +15,7 @@ nav {
     top: 0;
     margin-bottom: 0;
     padding-bottom: 0;
+    z-index: 9999;
 }
 
 .logo {
@@ -64,17 +65,9 @@ nav a {
 
 .details {
     position: absolute;
-    bottom: 0;
-    left: 20px;
+    bottom: 100px;
+    left: 70px;
     padding: 20px;
-}
-
-.highlighted {
-    display: inline-block;
-    font-size: large;
-    background-color: red;
-    padding: 4px 8px;
-    border-radius: 5px;
 }
 
 .MD {
@@ -82,22 +75,50 @@ nav a {
     gap: 1rem;
 }
 
+.top h1 {
+    font-size: 50pt;
+    margin: 2rem 0;
+}
+
+.top p {
+    font-size: 14pt;
+    margin: 2rem 0;
+    width: 650px;
+}
+
+.highlighted {
+    display: inline-block;
+    font-size: 18pt;
+    background-color: red;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.MD h6 {
+    font-size: 1rem;
+    margin: 0 0.8rem;
+}
+
 .Button {
     background-color: red;
     padding: 7px 14px;
-    border-radius: 5px;
+    border-radius: 7px;
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: x-large;
+    margin-right: 20px;
 }
 
 .Button-outlined {
     border: 2px solid white;
     padding: 7px 14px;
-    border-radius: 5px;
+    border-radius: 8px;
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: x-large
 }
 
 .movie-select {
