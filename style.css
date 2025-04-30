@@ -122,6 +122,7 @@ nav a {
 }
 
 .movie-select {
+    margin-top: 50px;
     background-image: linear-gradient(to bottom, black, rgb(32, 32, 32))
 }
 
@@ -133,6 +134,7 @@ nav a {
 
 .bar .right {
     margin-left: auto;
+    margin-bottom: 50px;
 }
 
 .red-btn {
@@ -162,19 +164,26 @@ nav a {
     font-weight: bold;
 }
 
+.movie-slider {
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+}
+
 .movie-card {
-    text-align: center;
+    text-align: left;
     background-color: #111;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    max-width: 320px;
-    margin: 10px auto;
+    max-width: 220px;
+    height: 370px;
+    margin: 10px 0;
 }
 
 .movie-card img {
     width: 100%;
-    height: 400px;
+    height: 270px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -189,6 +198,11 @@ nav a {
     margin: 4px 0;
     font-weight: normal;
     color: #ccc;
+}
+
+.movie-card .row {
+    display: flex;
+    gap: 100px
 }
 
 footer {
@@ -228,8 +242,8 @@ footer a:hover {
 
 footer hr {
     border: none;
-    border-top: 1px solid #444;
-    margin: 30px 0 10px;
+    border-top: 1px solid white;
+    margin: 30px 0;
 }
 
 footer > p {
