@@ -65,6 +65,7 @@ nav a {
 footer {
     background-color: black;
     color: white;
+    border-top: 1px solid grey;
 }
 
 .container {

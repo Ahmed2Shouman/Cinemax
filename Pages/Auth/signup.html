@@ -3,53 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Sign up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../Style/main.css">
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./signup.css">
 </head>
+<nav>
+    <div class="left">
+        <ul class="nav-links">
+            <a href="../Home/index.html" class="logo">Cinemax</a>
+            <li><a href="">Movies</a></li>
+            <li><a href="">Theaters</a></li>
+            <li><a href="">Offers</a></li>
+            <li><a href="">Membership</a></li>
+        </ul>
+    </div>
+    <div class="right">
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-search"></i></a></li>
+            <li><a href="../Auth/login.html" class="nav-btn">Sign In</a></li>
+            <li><a href="../Auth/signup.html" class="nav-btn">Sign Up</a></li>
+        </ul>
+    </div>
+</nav>
 <body>
-    <nav>
-        <div class="left">
-            <ul class="nav-links">
-                <a href="../Home/index.html" class="logo">Cinemax</a>
-                <li><a href="">Movies</a></li>
-                <li><a href="">Theaters</a></li>
-                <li><a href="">Offers</a></li>
-                <li><a href="">Membership</a></li>
-            </ul>
-        </div>
-        <div class="right">
-            <ul class="nav-links">
-                <li><a href="#"><i class="fas fa-search"></i></a></li>
-                <li><a href="./login.html" class="nav-btn">Sign In</a></li>
-                <li><a href="./signup.html" class="nav-btn">Sign Up</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="login-container">
+    <div class="signup-container">
         <h1 class="logo">CINEMAX</h1>
-        <h2 style="font-weight: bold;">Welcome back</h2>
-        <p>Sign in to continue your movie journey</p>
+        <h2 style="font-weight: bold;">Create your account</h2>
+        <p>Join Cinemax for the ultimate movie experience</p>
 
-        <div class="login-form">
+        <div class="signup-form">
             <form action="">
+                <div class="name">
+                    <div class="input-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" required>
+                    </div>
+                </div>
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" required>
                 </div>
                 <div class="input-group">
-                    <div class="label-row">
-                        <label for="password">Password</label>
-                        <a href="#" class="forgot-link">Forgot password?</a>
-                    </div>
+                    <label for="password">Password</label>
                     <input type="password" id="password" required>
                 </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Remember me</label>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
                 <div class="divider">
                     <hr><span>Or continue with</span><hr>
                 </div>
@@ -58,7 +65,7 @@
                     <button class="btn btn-outline"><i class="fab fa-facebook"></i> Facebook</button>
                 </div>
             </form>
-            <p class="signup-link">Don't have an account? <a href="./signup.html">Sign up</a></p>
+            <p class="signup-link">Already have an account? <a href="./login.html">Sign In</a></p>
         </div>
     </div>
 </body>
