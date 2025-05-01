@@ -33,7 +33,7 @@
 .highlighted {
     display: inline-block;
     font-size: 18pt;
-    background-color: red;
+    background-color: #e53e3e;
     padding: 10px 20px;
     border-radius: 15px;
     margin: 0;
@@ -45,7 +45,7 @@
 }
 
 .Button {
-    background-color: red;
+    background-color: #e53e3e;
     padding: 7px 14px;
     border-radius: 7px;
     color: white;
@@ -82,7 +82,7 @@
 }
 
 .red-btn {
-    background-color: red;
+    background-color: #e53e3e;
     padding: 7px 14px;
     border-radius: 16px;
     color: white;
