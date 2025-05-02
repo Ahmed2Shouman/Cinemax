@@ -27,14 +27,61 @@
     </div>
 </nav>
 <body>
-    
+    <div class="movies-container">
+        <!-- Filters Column -->
+        <aside class="filters">
+            <h2>Filters</h2>
+            <input type="text" placeholder="Search movies..." class="search-box"/>
+
+            <h4>Genre</h4>
+            <ul class="genre-list">
+                <li class="active">All Genres</li>
+                <li>Action</li>
+                <li>Adventure</li>
+                <li>Comedy</li>
+                <li>Drama</li>
+                <li>Horror</li>
+                <li>Sci-Fi</li>
+                <li>Thriller</li>
+            </ul>
+
+            <h4>Sort By</h4>
+            <select class="sort-select">
+                <option>Latest</option>
+                <option>Oldest</option>
+                <option>Top Rated</option>
+            </select>
+        </aside>
+
+        <!-- Movies Column -->
+        <main class="movies">
+            <div class="header">
+                <h2>All Movies</h2>
+                <p>8 movies found</p>
+            </div>
+
+            <div class="movies-grid">
+                <div class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="Movie 1" />
+                    <div class="movie-info">
+                        <h3>Movie Title 1</h3>
+                        <p>⭐ 8.5</p>
+                        <p>Genre: Action</p>
+                        <p>166 min</p>
+                        <a href="../Movies/movie-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Add more movie cards as needed -->
+            </div>
+        </main>
+    </div>
 </body>
 <footer>
     <div class="container">
         <div>
             <h1>Cinemax</h1>
             <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
-            <div></div>
         </div>
         <div>
             <h1>Quick Links</h1>

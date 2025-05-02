@@ -26,8 +26,60 @@
         </ul>
     </div>
 </nav>
-<body>
-    
+<body class="profile-page">
+
+  <!-- Profile Header -->
+  <section class="profile-header">
+    <img src="../../Assets/profile.jpg" alt="Profile Picture" class="avatar" />
+    <div class="user-info">
+      <h2>John Doe</h2>
+      <p>john.doe@example.com</p>
+      <span>Member since 2023</span>
+    </div>
+  </section>
+
+  <!-- Profile Content -->
+  <section class="profile-content">
+    <div class="sidebar">
+      <button class="active"><i class="fa-solid fa-ticket"></i> My Bookings</button>
+      <button><i class="fa-regular fa-credit-card"></i> Payment Methods</button>
+      <button><i class="fa-regular fa-bell"></i> Notifications</button>
+      <button><i class="fa-solid fa-gear"></i> Account Settings</button>
+      <button class="sign-out"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+    </div>
+
+    <div class="bookings">
+      <h3>Recent Bookings</h3>
+
+      <div class="booking-card">
+        <img src="../../Assets/dune.jpg" alt="Dune Poster" />
+        <div class="details">
+          <h4>Dune: Part Two</h4>
+          <p>Mar 10, 2024 at 18:30<br>CINEMAX Plaza<br>Seats: A4, A5</p>
+          <div class="actions">
+            <button class="primary">View Ticket</button>
+            <button class="secondary">Download Invoice</button>
+          </div>
+        </div>
+        <div class="price">$32.00</div>
+      </div>
+
+      <div class="booking-card">
+        <img src="../../Assets/oppenheimer.jpg" alt="Oppenheimer Poster" />
+        <div class="details">
+          <h4>Oppenheimer</h4>
+          <p>Feb 28, 2024 at 20:45<br>CINEMAX Grand<br>Seats: C12, C13, C14</p>
+          <div class="actions">
+            <button class="primary">View Ticket</button>
+            <button class="secondary">Download Invoice</button>
+          </div>
+        </div>
+        <div class="price">$48.00</div>
+      </div>
+
+    </div>
+  </section>
+
 </body>
 <footer>
     <div class="container">

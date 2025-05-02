@@ -1,0 +1,163 @@
+.theaters-page {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  height: 100vh;
+}
+
+.filters {
+  background-color: #000000;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 1px solid #222;
+}
+
+/* Enhanced .filters styles */
+.filters h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.filters label {
+  color: #aaa;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: block;
+}
+
+.filters input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.filters button,
+.filters .filter-option {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #cc3a32;
+  color: #ccc;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filters .filter-option {
+  background-color: transparent;
+  color: #ccc;
+}
+
+.filters .filter-option.active {
+  background-color: #cc3a32;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.theaters-list {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.theaters-list h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.theater-card {
+  background-color: #121212;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.theater-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.theater-info {
+  padding: 15px;
+}
+
+.theater-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.theater-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.features {
+  margin-top: 10px;
+}
+
+.feature-badge {
+  display: inline-block;
+  background-color: #1e2a38;
+  padding: 5px 10px;
+  margin: 5px 5px 0 0;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.view-shows-btn {
+  background-color: #cc3a32;
+  color: #fff;
+  padding: 12px;
+  text-align: center;
+  border: none;
+  border-top: 1px solid #222;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+}
+
+.filters .filter-group {
+  margin-bottom: 20px;
+}
+
+.filters .filter-group .filter-option {
+  transition: background-color 0.3s ease;
+}
+
+.filters .filter-group .filter-option:hover {
+  background-color: #cc3a32;
+  color: #fff;
+}
+
+.filters .search-bar {
+  margin-bottom: 20px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.rating .star {
+  margin-right: 5px;
+}

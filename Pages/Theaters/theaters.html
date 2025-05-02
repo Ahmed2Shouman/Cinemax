@@ -27,7 +27,81 @@
     </div>
 </nav>
 <body>
-    
+    <main class="theaters-page">
+        <aside class="filters">
+            <h2>Find Theaters</h2>
+            <input type="text" placeholder="Search theaters..." class="search-input">
+
+            <div class="filter-group">
+                <h3>Location</h3>
+                <ul class="filter-options">
+                    <li class="active">All Locations</li>
+                    <li>Downtown</li>
+                    <li>North</li>
+                    <li>South</li>
+                    <li>East</li>
+                    <li>West</li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>Features</h3>
+                <ul class="filter-options">
+                    <li class="active">All Features</li>
+                    <li>IMAX</li>
+                    <li>Dolby Atmos</li>
+                    <li>4DX</li>
+                    <li>VIP</li>
+                    <li>Recliner</li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="theaters-list">
+            <div class="theaters-header">
+                <h2>Our Theaters</h2>
+                <p class="result-count">5 theaters found</p>
+            </div>
+
+            <div class="theater-cards">
+                <div class="theater-card">
+                    <img src="../../Images/Halls/hall 1.jpg" alt="Cinemax Plaza">
+                    <div class="theater-info">
+                        <div class="rating"><i class="fas fa-star"></i> 4.8</div>
+                        <h3>CINEMAX Plaza</h3>
+                        <p><i class="fas fa-location-dot"></i> Downtown</p>
+                        <p>123 Main Street, Downtown</p>
+                        <p>8 Screens</p>
+                        <p>(555) 123-4567</p>
+                        <div class="tags">
+                            <span>IMAX</span>
+                            <span>Dolby Atmos</span>
+                            <span>VIP</span>
+                        </div>
+                        <a href="#" class="btn">View Shows</a>
+                    </div>
+                </div>
+
+                <div class="theater-card">
+                    <img src="../../Images/Halls/hall 2.jpg" alt="Cinemax Grand">
+                    <div class="theater-info">
+                        <div class="rating"><i class="fas fa-star"></i> 4.6</div>
+                        <h3>CINEMAX Grand</h3>
+                        <p><i class="fas fa-location-dot"></i> North</p>
+                        <p>456 Park Avenue, North District</p>
+                        <p>12 Screens</p>
+                        <p>(555) 234-5678</p>
+                        <div class="tags">
+                            <span>4DX</span>
+                            <span>SCREENX</span>
+                            <span>Recliner</span>
+                        </div>
+                        <a href="#" class="btn">View Shows</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 <footer>
     <div class="container">

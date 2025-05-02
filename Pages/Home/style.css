@@ -123,6 +123,7 @@
     max-width: 220px;
     height: 390px;
     margin: 10px 0;
+    transition: transform 0.2s;
 }
 
 .movie-card img {
@@ -149,3 +150,6 @@
     gap: 100px
 }
 
+.movie-card:hover {
+    transform: scale(1.05);
+}
