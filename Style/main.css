@@ -49,6 +49,10 @@ nav .right {
     gap: 2rem;
 }
 
+.nav-links a:hover {
+    color: #e53e3e;
+}
+
 nav a {
     color: white;
     text-decoration: none;
@@ -60,6 +64,11 @@ nav a {
     padding: 7px 14px;
     border-radius: 5px;
     margin-left: 0px;
+}
+
+.nav-btn:hover {
+    background-color: black;
+    border: 1px solid #e53e3e;
 }
 
 footer {
