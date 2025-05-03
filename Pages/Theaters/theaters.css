@@ -1,4 +1,5 @@
 .theaters-page {
+  padding: 20px 100px;
   display: grid;
   grid-template-columns: 20% 80%;
   height: 100vh;
@@ -8,24 +9,14 @@
   background-color: #000000;
   padding: 20px;
   overflow-y: auto;
-  border-right: 1px solid #222;
 }
 
 /* Enhanced .filters styles */
 .filters h2 {
   font-size: 20px;
   margin-bottom: 10px;
+  margin-left: 5px;
   color: #fff;
-}
-
-.filters label {
-  color: #aaa;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  margin-top: 20px;
-  display: block;
 }
 
 .filters input[type="text"] {
@@ -38,29 +29,43 @@
   color: #fff;
 }
 
-.filters button,
-.filters .filter-option {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #cc3a32;
-  color: #ccc;
-  border: none;
-  border-radius: 5px;
-  text-align: left;
+.filter-group h3 {
+  margin-bottom: 10px;
+}
+
+.filter-options {
+  list-style: none;
+  padding-bottom: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.filters .filter-option {
-  background-color: transparent;
-  color: #ccc;
-}
-
-.filters .filter-option.active {
+.active{
   background-color: #cc3a32;
   border-radius: 5px;
   color: #fff;
+  padding: 10px 15px;
+}
+
+.filter-options li {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.filter-options li:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Theaters */
+
+.theaters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
 }
 
 .theaters-list {
@@ -73,6 +78,12 @@
   margin-bottom: 20px;
   color: #fff;
   font-weight: bold;
+}
+
+.theater-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .theater-card {
@@ -89,10 +100,12 @@
   width: 100%;
   height: auto;
   display: block;
+  padding: 20px;
+  filter: brightness(70%);
 }
 
 .theater-info {
-  padding: 15px;
+  padding: 30px 15px;
 }
 
 .theater-info h3 {
@@ -101,10 +114,36 @@
   color: #fff;
 }
 
+.theater-info h6 {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
 .theater-info p {
-  margin: 5px 0;
+  margin-bottom: 5px;
   font-size: 14px;
   color: #ccc;
+}
+
+.btn {
+  background-color: #cc3a32;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.tags {
+  margin: 20px 10px 30px 0;
+}
+
+.tags span {
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .features {
@@ -119,18 +158,6 @@
   border-radius: 20px;
   font-size: 12px;
   color: #fff;
-}
-
-.view-shows-btn {
-  background-color: #cc3a32;
-  color: #fff;
-  padding: 12px;
-  text-align: center;
-  border: none;
-  border-top: 1px solid #222;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0 0 10px 10px;
 }
 
 .filters .filter-group {
@@ -160,4 +187,9 @@
 
 .rating .star {
   margin-right: 5px;
+}
+
+.theater-card:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
