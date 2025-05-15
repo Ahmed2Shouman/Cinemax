@@ -5,8 +5,7 @@
     background-repeat: no-repeat;
     margin-top: 0;
     height: 100vh;
-    /* transition: background-image 1s ease-in-out; */
-    animation: slide-fade 1s ease-in-out;
+    transition: background-image 1s ease-in-out;
 }
 
 .details {
@@ -154,15 +153,4 @@
 
 .movie-card:hover {
     transform: scale(1.05);
-}
-
-@keyframes slide-fade {
-  from {
-    background-position: right center;
-    opacity: 0.3;
-  }
-  to {
-    background-position: center;
-    opacity: 1;
-  }
 }
