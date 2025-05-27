@@ -125,6 +125,8 @@
     height: 390px;
     margin: 10px 0;
     transition: transform 0.2s;
+    text-decoration: none;
+    color: white;
 }
 
 .movie-card img {
