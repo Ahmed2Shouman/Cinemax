@@ -32,8 +32,25 @@
 }
 
 .date-select {
-    padding: 200px 50px 100px 200px;
-    align-text : center;
+    padding: 200px 100px 100px 50px;
+    justify-items : center;
+    margin: 0;
+}
+
+.seat-select {
+    padding: 50px 100px 100px 100px;
+    justify-items : center;
+    margin: 0;
+}
+
+.seat-select h2 {
+    background-color: #e53e3e;
+    padding: 10px 200px;
+    border-radius: 15px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .seating-chart {
