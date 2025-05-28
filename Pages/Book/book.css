@@ -32,113 +32,89 @@
 }
 
 .date-select {
-    padding: 50px 0;
-    justify-items : center;
-    margin: 0;
-}
-
-.date-select h1 {
-    margin-bottom: 20px;
-}
-
-.date-select button {
-    color: white;
-    background-color: #2b2f3a;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.2s ease-in-out;
-    margin-bottom: 20px;
-}
-
-.date-select button:hover {
-    background-color: #3a3f4d;
+    margin: 50px 0;
+    padding: 20px 0;
+    align-text: center;
+    justify-items: center;
+    width: 100%;
 }
 
 .date-select .row {
     display: flex;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
-}
-
-.seat-select {
-    justify-items : center;
-    align-text: center;
+    gap: 20px;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 
-.seat-select h2 {
-    background-color: #555b6e;
-    padding: 10px 200px;
-    border-radius: 15px;
+.normal-btn {
+    background-color: #2b2f3a;
+    border: none;
     color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.normal-btn:hover {
+    background-color: #3a3f4d;
+    color: white;
+}
+
+.selected-btn {
+    background-color: #d33b2d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seat-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-select .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.row-seats button {
+    background-color: #2b2f3a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seat-select h2{
     font-size: 24px;
-    text-align: center;
     margin: 20px 0;
+    padding: 10px 200px;
+    background-color: #2b2f3a;
+    border-radius: 5px;
 }
 
 .seating-chart {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
-    color: white;
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    align-content: center;
-}
-
-.row-label {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.2rem;
-    font-weight: bold;
-}
-
-.row-seats {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    align-content: center;
-}
-
-.row-seats button {
-    width: 40px;
-    height: 40px;
-    background-color: #2b2f3a;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.row-seats button:hover:not(.taken):not(.selected) {
-    background-color: #3a3f4d;
-}
-
-.row-seats button.selected {
-    background-color: #e74c3c;
-}
-
-.row-seats button.taken {
-    background-color: #555b6e;
-    cursor: not-allowed;
-}
-
-.legend {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    font-size: 1rem;
+    margin-top: 20px;
 }
 
 .legend-box {
@@ -159,4 +135,5 @@
 
 .legend-box.taken {
     background-color: #555b6e;
+    transition: background-color 0.2s ease-in-out;
 }
