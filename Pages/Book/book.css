@@ -32,15 +32,42 @@
 }
 
 .date-select {
-    padding: 200px 100px 100px 50px;
+    padding: 50px 0;
     justify-items : center;
     margin: 0;
 }
 
+.date-select h1 {
+    margin-bottom: 20px;
+}
+
+.date-select button {
+    color: white;
+    background-color: #2b2f3a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.date-select button:hover {
+    background-color: #3a3f4d;
+}
+
+.date-select .row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .seat-select {
-    padding: 50px 100px 100px 100px;
     justify-items : center;
-    margin: 0;
+    align-text: center;
+    margin-bottom: 50px;
 }
 
 .seat-select h2 {
@@ -61,6 +88,12 @@
     color: white;
 }
 
+.row {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
 .row-label {
     font-size: 1.2rem;
     margin-top: 1rem;
@@ -72,6 +105,7 @@
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
+    align-content: center;
 }
 
 .row-seats button {
