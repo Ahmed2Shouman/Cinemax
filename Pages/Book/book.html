@@ -61,41 +61,88 @@
         <h1>Select Seats</h1>
         <h2 class="Screen">Screen</h2>
         <div class="seat-map">
-            <div class="seating-chart">
-                <div class="row">
-                    <div class="row-label">A</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+            <div class="seat-row">
+                <h3 class="row-label">A</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">B</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">C</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
                 </div>
             </div>
-            <div class="legend">
-                    <span><span class="legend-box available"></span> Available</span>
-                    <span><span class="legend-box selected"></span> Selected</span>
-                    <span><span class="legend-box taken"></span> Taken</span>
+            <div class="seat-row">
+                <h3 class="row-label">B</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">C</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">D</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">E</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
             </div>
         </div>
-
+        <div class="color-code">
+            <div class="legend">
+                <div class="line"><div class="legend-box available"></div> <h3>Available</h3></div>
+                <div class="line"><div class="legend-box selected"></div> <h3>Selected</h3></div>
+                <div class="line"><div class="legend-box taken"></div> <h3>Taken</h3></div>
+            </div>
+        </div>
+        
     </div>
+    <div class="booking-summary">
+            <h2>Booking Summary</h2>
+            <p><strong>Movie</strong> <span class="summary-movie">Sinners</span></p>
+            <p><strong>Date</strong> <span class="summary-date">Today</span></p>
+            <p><strong>Time</strong> <span class="summary-time">18:30</span></p>
+            <p><strong>Seats</strong> <span class="summary-seats">No seats selected</span></p>
+            <button class="confirm-btn disabled">Select at least one seat</button>
+        </div>
 </body>
 <footer>
     <div class="container">
-        <div>ß
+        <div>
             <h1>Cinemax</h1>
             <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
             <div></div>

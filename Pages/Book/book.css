@@ -110,11 +110,45 @@
     border-radius: 5px;
 }
 
-.seating-chart {
+.seat-group button {
+    background-color: #2b2f3a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seat-group button:hover {
+    background-color: #3a3f4d;
+    color: white;
+}
+
+.seat-row {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.seat-group {
+    display: flex;
+    gap: 5px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend .line {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .legend-box {
@@ -136,4 +170,39 @@
 .legend-box.taken {
     background-color: #555b6e;
     transition: background-color 0.2s ease-in-out;
+}
+
+.booking-summary {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    padding: 20px;
+    margin: 100px auto;
+    border-radius: 10px;
+    max-width: 900px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.booking-summary h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.booking-summary p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.booking-summary span {
+    float: right;
+}
+
+.confirm-btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #1e293b;
+    color: #94a3b8;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
 }
