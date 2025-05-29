@@ -182,4 +182,31 @@ footer > p {
     nav {
         padding: 20px 30px;
     }
+
+    .container {
+        flex-direction: column;
+        gap: 30px;
+        max-width: 100%;
+        margin: 50px 30px;
+        padding-right: 0;
+    }
+
+    footer p, footer a{
+        width: 100%;
+        font-size: 0.8rem;
+        color: #ccc;
+    }
+
+    footer .container {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    footer p, footer a, footer h1 {
+        text-align: left;
+    }
+
+    .cr {
+        text-align: center;
+    }
 }
