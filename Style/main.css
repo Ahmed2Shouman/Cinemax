@@ -24,7 +24,6 @@ nav {
     top: 0;
     padding: 20px 50px;
     z-index: 9999;
-    border-bottom: 0.5px solid grey;
 }
 
 .sidebar li {
@@ -44,12 +43,11 @@ nav {
     top: 0;
     right: 0;
     height: 100vh;
-    width: 250px;
-    z-index: 999;
+    width: 350px;
     background-color: black;
-    display: flex;
+    display: none;
     flex-direction: column;
-    padding: 20px;
+    padding: 30px 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -79,6 +77,10 @@ nav ul {
 }
 
 .nav-links a:hover {
+    color: #e53e3e;
+}
+
+.sidebar a:hover {
     color: #e53e3e;
 }
 
@@ -157,4 +159,27 @@ footer > p {
 .cr {
     justify-self: center;
     margin-bottom: 50px;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .show-on-mobile {
+        display: block;
+    }
+
+    .logo {
+        color: #e53e3e;
+        font-size: x-large;
+    }
+
+    nav {
+        padding: 20px 30px;
+    }
 }
