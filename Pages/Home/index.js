@@ -41,6 +41,5 @@ function updateSlider() {
 
   current = (current + 1) % movies.length;
 }
-
 setInterval(updateSlider, 5000); // change every 5 seconds
 window.onload = updateSlider; // initial load

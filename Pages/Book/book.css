@@ -206,3 +206,52 @@
     border-radius: 5px;
     cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+    .top h1 {
+        font-size: 28pt;
+    }
+
+    .top p {
+        font-size: 12pt;
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .details {
+        left: 20px;
+        right: 20px;
+        bottom: 50px;
+        padding: 10px;
+    }
+
+    .seat-select h2 {
+        font-size: 18px;
+        padding: 10px;
+        width: 90%;
+    }
+
+    .seat-row, .seat-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .legend {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .legend .line {
+        margin: 5px 0;
+    }
+
+    .booking-summary {
+        width: 90%;
+        padding: 15px;
+        margin: 40px auto;
+    }
+
+    .confirm-btn {
+        font-size: 14px;
+    }
+}
