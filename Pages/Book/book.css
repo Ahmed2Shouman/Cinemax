@@ -254,4 +254,8 @@
     .confirm-btn {
         font-size: 14px;
     }
+
+    .Screen {
+        text-align: center;
+    }
 }
