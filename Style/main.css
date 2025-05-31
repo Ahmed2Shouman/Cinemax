@@ -4,11 +4,16 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: black;
     color: white;
     font-family: Arial, sans-serif;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .logo {
