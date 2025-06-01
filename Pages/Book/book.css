@@ -30,13 +30,13 @@
 
 .top p {
     font-size: 2rem;
-    margin: 2rem 0;
+    margin-top: 2rem;
     max-width: 700px;
     padding-right: 20px;
 }
 
 .date-select {
-    margin: 1.5rem 0;
+    margin: 0;
     padding: 0 2rem;
     align-text: center;
     justify-items: center;
