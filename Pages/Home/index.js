@@ -5,7 +5,8 @@ const movies = [
     time: "2h 30m",
     rating: "8.5",
     description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
-    image: "../../Images/Sinners.jpg"
+    image: "../../Images/Sinners.jpg",
+    trailer: "https://www.youtube.com/watch?v=bKGxHflevuk"
   },
   {
     title: "Thunderbolts*",
@@ -13,7 +14,8 @@ const movies = [
     time: "2h 15m",
     rating: "7.9",
     description: "A ship crew faces a mysterious force in uncharted waters.",
-    image: "../../Images/thunderbolts.jpg"
+    image: "../../Images/thunderbolts.jpg",
+    trailer: "https://www.youtube.com/watch?v=VlaAD_F_6ao"
   },
 ];
 
@@ -35,11 +37,33 @@ function updateSlider() {
       <h6><i class="fas fa-star"></i> ${movie.rating}</h6>
     </div>
     <p>${movie.description}</p>
-    <a href="#" class="Button">Book Tickets</a>
-    <a href="#" class="Button-outlined">Watch Trailer</a>
+    <a href="../Book/book.html" class="Button">Book Tickets</a>
+    <a href="${movie.trailer}" class="Button">Watch Trailer</a>
   `;
 
   current = (current + 1) % movies.length;
 }
+
+function scrollSlider(direction) {
+  const slider = document.getElementById('movieSlider');
+  const scrollAmount = 300;
+  slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+
+function autoScrollSlider() {
+  const slider = document.getElementById('movieSlider');
+  const scrollAmount = 300;
+  setInterval(() => {
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+      slider.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }, 4000);
+}
+
 setInterval(updateSlider, 5000); // change every 5 seconds
-window.onload = updateSlider; // initial load
+window.onload = () => {
+  updateSlider();
+  autoScrollSlider();
+};

@@ -25,7 +25,7 @@
     </div>
     <div class="sidebar">
         <ul>
-            <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
+            <li onclick=toggleSidebar() class="toggle-btn"><a href="#"><i class="fas fa-times"></i></a></li>
             <li><a href="../Movies/movies.html">Movies</a></li>
             <li><a href="../Theaters/theaters.html">Theaters</a></li>
             <li><a href="../Offers/offers.html">Offers</a></li>
@@ -45,42 +45,60 @@
                 <h6><i class="fas fa-star"></i> rate</h6>
             </div>
             <p>Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
-            <div class="btn-row">
-                <a href="" class="Button">Book Tickets</a>
-                <a href="" class="Button-outlined">Watch Trailer</a>
-            </div>
+            <a href="" class="Button">Book Tickets</a>
+            <a href="" class="Button">Watch Trailer</a>
         </div>
     </div>
     <div class="movie-select">
         <h1>Now Showing</h1>
-        <div class="movie-slider">
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
+        <div class="movie-slider-wrapper" style="position: relative; width: 100%;">
+            <div class="movie-slider" id="movieSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth;">
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="scroll-btn left" onclick="scrollSlider(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-btn right" onclick="scrollSlider(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
