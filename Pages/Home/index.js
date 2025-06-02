@@ -38,7 +38,7 @@ function updateSlider() {
     </div>
     <p>${movie.description}</p>
     <a href="../Book/book.html" class="Button">Book Tickets</a>
-    <a href="${movie.trailer}" class="Button">Watch Trailer</a>
+    <a href="${movie.trailer}" class="Button" target="_blank">Watch Trailer</a>
   `;
 
   current = (current + 1) % movies.length;
