@@ -1,195 +1,165 @@
-.theaters-page {
-  padding: 20px 100px;
-  display: grid;
-  grid-template-columns: 20% 80%;
-  height: 100vh;
+.cards-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 100vh;
+    width: 100%;
+    padding: 20px 70px;
 }
 
+/* Filters Column */
 .filters {
-  background-color: #000000;
-  padding: 20px;
-  overflow-y: auto;
+    padding: 20px;
+    background-color: #000;
+    border-right: 1px solid #333;
 }
 
-/* Enhanced .filters styles */
 .filters h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  margin-left: 5px;
-  color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.filters input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #1a1a1a;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
+.search-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #1e1e1e;
+    border: none;
+    color: white;
+    border-radius: 5px;
 }
 
-.filter-group h3 {
-  margin-bottom: 10px;
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
 }
 
-.filter-options {
-  list-style: none;
-  padding-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.filter-list li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    margin: 10px 0;
 }
 
-.active{
-  background-color: #cc3a32;
-  border-radius: 5px;
-  color: #fff;
-  padding: 10px 15px;
+.filter-list li:hover {
+    background-color: #1a1a1a;
 }
 
-.filter-options li {
-  padding: 10px 15px;
-  margin-bottom: 10px;
+.filter-list .active {
+    background-color: #d33b2d;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
 }
 
-.filter-options li:hover {
-  background-color: #1a1a1a;
-  color: #fff;
-  border-radius: 5px;
+.sort-select {
+    width: 100%;
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
-/* Theaters */
-
-.theaters-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  
+.filters h4 {
+    margin-bottom: 10px;
 }
 
-.theaters-list {
-  padding: 20px;
-  overflow-y: auto;
+/* Movies Column */
+.main-coulumn {
+    padding: 20px;
+    overflow-y: auto;
 }
 
-.theaters-list h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #fff;
-  font-weight: bold;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.theater-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 165px;
 }
 
-.theater-card {
-  background-color: #121212;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.theater-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-  padding: 20px;
-  filter: brightness(70%);
-}
-
-.theater-info {
-  padding: 30px 15px;
-}
-
-.theater-info h3 {
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  color: #fff;
-}
-
-.theater-info h6 {
-  margin: 0 0 2px 0;
-  font-size: 14px;
-  color: #fff;
-}
-
-.theater-info p {
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #ccc;
-}
 
 .btn {
-  background-color: #cc3a32;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 10px;
-  text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #d33b2d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.tags {
-  margin: 20px 10px 30px 0;
+.show-on-mobile {
+    display: none;
 }
 
-.tags span {
-  background-color: #444;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        height: auto;
+    }
 
-.features {
-  margin-top: 10px;
-}
+    .toggle-filters-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
 
-.feature-badge {
-  display: inline-block;
-  background-color: #1e2a38;
-  padding: 5px 10px;
-  margin: 5px 5px 0 0;
-  border-radius: 20px;
-  font-size: 12px;
-  color: #fff;
-}
+    .filters-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px 30px;
+    }
 
-.filters .filter-group {
-  margin-bottom: 20px;
-}
+    .show-on-mobile {
+        display: block;
+    }
 
-.filters .filter-group .filter-option {
-  transition: background-color 0.3s ease;
-}
+    .filters-content {
+        display: none;
+    }
 
-.filters .filter-group .filter-option:hover {
-  background-color: #cc3a32;
-  color: #fff;
-}
+    .filters-content.active {
+        display: block;
+    }
 
-.filters .search-bar {
-  margin-bottom: 20px;
-}
+    .filters {
+         border-right: none;
+         padding: 0;
+    }
 
-.rating {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color: gold;
-  margin-bottom: 10px;
-}
+    .header {
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
-.rating .star {
-  margin-right: 5px;
-}
+    .cards-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
 
-.theater-card:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .movie-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .movie-card img {
+        height: 350px;
+    }
 }

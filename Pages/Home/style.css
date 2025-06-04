@@ -100,44 +100,7 @@
     gap: 20px;
 }
 
-.movie-card {
-    text-align: left;
-    background-color: #111;
-    padding: 20px;
-    border-radius: 10px;
-    min-width: 280px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-    text-decoration: none;
-    color: white;
-}
 
-.movie-card img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.movie-card h2 {
-    font-size: 1.2rem;
-    margin: 10px 0 5px;
-}
-
-.movie-card h6 {
-    margin: 4px 0;
-    font-weight: normal;
-    color: #ccc;
-}
-
-.movie-card .row {
-    display: flex;
-    gap: 100px
-}
-
-.movie-card:hover {
-    transform: scale(1.05);
-}
 
 @media (max-width: 768px) {
     .top {

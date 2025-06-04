@@ -127,6 +127,45 @@ footer {
     padding-right: 250px;
 }
 
+.movie-card {
+    text-align: left;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 280px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: white;
+}
+
+.movie-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.movie-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0 5px;
+}
+
+.movie-card h6 {
+    margin: 4px 0;
+    font-weight: normal;
+    color: #ccc;
+}
+
+.movie-card .row {
+    display: flex;
+    gap: 100px
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
 footer h1 {
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -164,6 +203,67 @@ footer > p {
 .cr {
     justify-self: center;
     margin-bottom: 50px;
+}
+
+.theater-card {
+  background-color: #121212;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 400px;
+}
+
+.theater-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 20px;
+  filter: brightness(70%);
+}
+
+.theater-info {
+  padding: 30px 15px;
+}
+
+.theater-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.theater-info h6 {
+  margin: 0 0 2px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.theater-info p {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.btn {
+  background-color: #cc3a32;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.tags {
+  margin: 20px 10px 30px 0;
+}
+
+.tags span {
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .hide {
@@ -213,5 +313,10 @@ footer > p {
 
     .cr {
         text-align: center;
+    }
+
+    .theater-card {
+        width: 100%;
+        max-width: 400px;
     }
 }
