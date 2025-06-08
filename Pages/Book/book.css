@@ -1,18 +1,17 @@
 .top {
-    background-image: linear-gradient(to bottom, transparent, black), url(../../images/Sinners.jpg);
+    background-image: linear-gradient(to bottom, transparent, black), url(../../Images/Sinners.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 0;
     height: 100vh;
     transition: background-image 1s ease-in-out;
+    padding: 50px;
 }
 
 .details {
     position: absolute;
     bottom: 100px;
-    left: 70px;
-    padding: 20px;
 }
 
 .MD {
@@ -20,143 +19,217 @@
     gap: 1rem;
 }
 
+.MD h6 {
+    font-size: 1.2rem;
+}
+
 .top h1 {
-    font-size: 50pt;
+    font-size: 5rem;
     margin: 2rem 0;
 }
 
 .top p {
-    font-size: 14pt;
-    margin: 2rem 0;
-    width: 650px;
+    font-size: 2rem;
+    margin-top: 2rem;
+    max-width: 700px;
+    padding-right: 20px;
 }
 
 .date-select {
-    padding: 50px 0;
-    justify-items : center;
     margin: 0;
-}
-
-.date-select h1 {
-    margin-bottom: 20px;
-}
-
-.date-select button {
-    color: white;
-    background-color: #2b2f3a;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.2s ease-in-out;
-    margin-bottom: 20px;
-}
-
-.date-select button:hover {
-    background-color: #3a3f4d;
+    padding: 0 2rem;
+    align-text: center;
+    justify-items: center;
+    width: 100%;
 }
 
 .date-select .row {
-    display: flex;
-    gap: 1rem;
+    display: inline-block;
     justify-content: center;
     align-items: center;
-}
-
-.seat-select {
-    justify-items : center;
-    align-text: center;
+    margin-top: 20px;
     margin-bottom: 50px;
 }
 
-.seat-select h2 {
-    background-color: #555b6e;
-    padding: 10px 200px;
-    border-radius: 15px;
-    color: white;
-    font-size: 24px;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.seating-chart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    color: white;
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    align-content: center;
-}
-
-.row-label {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.2rem;
-    font-weight: bold;
-}
-
-.row-seats {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    align-content: center;
-}
-
-.row-seats button {
-    width: 40px;
-    height: 40px;
+.normal {
     background-color: #2b2f3a;
     border: none;
     color: white;
     border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s ease-in-out;
 }
 
-.row-seats button:hover:not(.taken):not(.selected) {
+.normal:hover {
     background-color: #3a3f4d;
+    color: white;
 }
 
-.row-seats button.selected {
-    background-color: #e74c3c;
+.selected {
+    background-color: #d33b2d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.row-seats button.taken {
-    background-color: #555b6e;
-    cursor: not-allowed;
+.btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.seat-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.5rem;
+}
+
+.seat-select .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seat-select h2{
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    padding: 0.8rem 7rem;
+    background-color: #2b2f3a;
+    border-radius: 1rem;
+}
+
+.seat-group button {
+    background-color: #2b2f3a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seat-group button:hover {
+    background-color: #3a3f4d;
+    color: white;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.seat-group {
+    display: flex;
+    gap: 5px;
 }
 
 .legend {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    font-size: 1rem;
+    align-items: center;
+}
+
+.legend .line {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
 }
 
 .legend-box {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
     margin-right: 0.5rem;
-    border-radius: 4px;
 }
 
 .legend-box.available {
     background-color: #2b2f3a;
 }
 
-.legend-box.selected {
+.legend-box.selected-box {
     background-color: #e74c3c;
 }
 
 .legend-box.taken {
     background-color: #555b6e;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.booking-summary {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    padding: 20px;
+    margin: 2rem 2rem;
+    border-radius: 10px;
+    min-width: 23rem;
+    max-width: 50rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    justify-self: center;
+}
+
+.booking-summary h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.booking-summary p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.booking-summary span {
+    float: right;
+}
+
+.confirm-btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #1e293b;
+    color: #94a3b8;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+
+    .top {
+        padding:30px;
+        height: 80vh;
+    }
+
+    .details {
+        bottom: 200px;
+    }
+
+    .top h1 {
+        font-size: 3rem;
+    }
+
+    .top p {
+        font-size: 1.5rem;
+    }
+
+    .seat-group button {
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.7rem;
+    }
+    
 }

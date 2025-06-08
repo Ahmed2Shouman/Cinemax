@@ -1,18 +1,17 @@
 .top {
-    background-image: linear-gradient(to bottom, transparent, black), url(../../images/Sinners.jpg);
+    background-image: linear-gradient(to bottom, transparent, black), url(../../Images/Sinners.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-top: 0;
     height: 100vh;
     transition: background-image 1s ease-in-out;
+    padding: 50px;
 }
 
 .details {
     position: absolute;
     bottom: 100px;
-    left: 70px;
-    padding: 20px;
 }
 
 .MD {
@@ -20,29 +19,29 @@
     gap: 1rem;
 }
 
+.MD h6 {
+    font-size: 1rem;
+}
+
 .top h1 {
-    font-size: 50pt;
-    margin: 2rem 0;
+    font-size: 4rem;
+    margin: 1rem 0;
 }
 
 .top p {
-    font-size: 14pt;
+    font-size: 1.5rem;
     margin: 2rem 0;
-    width: 650px;
+    max-width: 700px;
+    padding-right: 20px;
 }
 
 .highlighted {
     display: inline-block;
-    font-size: 18pt;
-    background-color: #e53e3e;
-    padding: 10px 20px;
-    border-radius: 15px;
-    margin: 0;
-}
-
-.MD h6 {
     font-size: 1rem;
-    margin: 0 0.8rem;
+    background-color: #e53e3e;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    margin: 0;
 }
 
 .Button {
@@ -56,103 +55,74 @@
     margin-right: 20px;
 }
 
-.Button-outlined {
-    border: 2px solid white;
-    padding: 7px 14px;
-    border-radius: 8px;
+.Button:hover {
+    background: none;
+    border: 2px solid red;
+    color: red;
+}
+
+.slider-controls {
+    display: flex;
+    margin-bottom: 50px;
+    gap: 20px
+}
+
+.scroll-btn {
+    background-color: #e53e3e;
+    border: none;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: x-large
-}
-
-.movie-select {
-    margin-top: 50px;
-    background-image: linear-gradient(to bottom, black, rgb(32, 32, 32))
-}
-
-.bar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
-    padding: 0 5rem;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
 }
 
-.bar .right {
-    margin-left: auto;
-    margin-bottom: 50px;
+.scroll-btn:hover {
+    background-color: #c53030;
 }
-
-.red-btn {
-    background-color: #e53e3e;
-    padding: 7px 14px;
-    border-radius: 16px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.grey-btn {
-    background-color: grey;
-    padding: 7px 14px;
-    border-radius: 16px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.swipe-btn {
-    background-color: grey;
-    padding: 7px;
-    border-radius: 14px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.movie-select {
+    margin-top: 0;
+    background-image: linear-gradient(to bottom, black, rgb(32, 32, 32));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .movie-slider {
-    padding: 30px;
+    padding: 30px 50px;
     display: flex;
     gap: 20px;
 }
 
-.movie-card {
-    text-align: left;
-    background-color: #111;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    max-width: 220px;
-    height: 390px;
-    margin: 10px 0;
-    transition: transform 0.2s;
-    text-decoration: none;
-    color: white;
-}
 
-.movie-card img {
-    width: 100%;
-    height: 270px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
 
-.movie-card h2 {
-    font-size: 1.2rem;
-    margin: 10px 0 5px;
-}
+@media (max-width: 768px) {
+    .top {
+        padding:30px;
+        height: 80vh;
+    }
 
-.movie-card h6 {
-    margin: 4px 0;
-    font-weight: normal;
-    color: #ccc;
-}
+    .details {
+        bottom: 200px;
+    }
 
-.movie-card .row {
-    display: flex;
-    gap: 100px
-}
+    .top h1 {
+        font-size: 3rem;
+    }
 
-.movie-card:hover {
-    transform: scale(1.05);
+    .top p {
+        font-size: 1rem;
+        margin: 1rem 0;
+    }
+
+    .Button {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
 }

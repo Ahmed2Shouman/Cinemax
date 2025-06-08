@@ -10,20 +10,27 @@
     
 </head>
 <nav>
-    <div class="left">
-        <ul class="nav-links">
+    <div class="nav-container">
+        <ul class="nav-links left">
             <a href="../Home/index.html" class="logo">Cinemax</a>
+            <li><a href="../Movies/movies.html" class="hide-on-mobile">Movies</a></li>
+            <li><a href="../Theaters/theaters.html" class="hide-on-mobile">Theaters</a></li>
+            <li><a href="../Offers/offers.html" class="hide-on-mobile">Offers</a></li>
+        </ul>
+        <ul class="nav-links right">
+            <li><a href="../Auth/login.html" class="nav-btn hide-on-mobile">Sign In</a></li>
+            <li><a href="../Auth/signup.html" class="nav-btn hide-on-mobile">Sign Up</a></li>
+            <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li onclick=toggleSidebar() class="toggle-btn"><a href="#"><i class="fas fa-times"></i></a></li>
             <li><a href="../Movies/movies.html">Movies</a></li>
             <li><a href="../Theaters/theaters.html">Theaters</a></li>
             <li><a href="../Offers/offers.html">Offers</a></li>
-            <li><a href="../Membership/membership.html">Membership</a></li>
-        </ul>
-    </div>
-    <div class="right">
-        <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
-            <li><a href="../Auth/login.html" class="nav-btn">Sign In</a></li>
-            <li><a href="../Auth/signup.html" class="nav-btn">Sign Up</a></li>
+            <li><a href="../Auth/login.html">Sign In</a></li>
+            <li><a href="../Auth/signup.html">Sign Up</a></li>
         </ul>
     </div>
 </nav>
@@ -39,59 +46,70 @@
             </div>
             <p>Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
             <a href="" class="Button">Book Tickets</a>
-            <a href="" class="Button-outlined">Watch Trailer</a>
+            <a href="" class="Button" target="_blank">Watch Trailer</a>
         </div>
     </div>
     <div class="movie-select">
-        <div class="bar">
-            <div class="left">
-                <button class="red-btn">Now Showing</button>
-                <button class="grey-btn">Comng Soon</button>
-            </div>
-            <div class="right">
-                <button class="swipe-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="swipe-btn"><i class="fas fa-chevron-right"></i></button>
+        <h1>Now Showing</h1>
+        <div class="movie-slider-wrapper" style="position: relative; width: 100%;">
+            <div class="movie-slider" id="movieSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth;">
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
+                <a href="../../Pages/Book/book.html" class="movie-card">
+                    <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
+                    <h2>Sinners</h2>
+                    <div class="row">
+                        <h6><i class="fas fa-star"></i> rate</h6>
+                        <h6><i class="fas fa-clock"></i> time</h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> genre</h6>
+                </a>
             </div>
         </div>
-        <div class="movie-slider">
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
-            <a href="../../Pages/Book/book.html" class="movie-card">
-                <img src="../../Images/sinners-poster.jpg" alt="sinners-poster">
-                <h2>Sinners</h2>
-                <div class="row">
-                    <h6><i class="fas fa-star"></i> rate</h6>
-                    <h6><i class="fas fa-clock"></i> time</h6>
-                </div>
-                <h6><i class="fas fa-film"></i> genre</h6>
-            </a>
+        <div class="slider-controls">
+            <button class="scroll-btn left" onclick="scrollSlider(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-btn right" onclick="scrollSlider(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./index.js"></script>
+    <script src="../../Style/main.js"></script>
 </body>
 <footer>
     <div class="container">
         <div>
             <h1>Cinemax</h1>
             <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
-            <div></div>
         </div>
         <div>
             <h1>Quick Links</h1>

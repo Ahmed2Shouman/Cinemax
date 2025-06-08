@@ -3,67 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theaters</title>
+    <title>Movies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../Style/main.css">
     <link rel="stylesheet" href="./theaters.css">
 </head>
 <nav>
-    <div class="left">
-        <ul class="nav-links">
+    <div class="nav-container">
+        <ul class="nav-links left">
             <a href="../Home/index.html" class="logo">Cinemax</a>
+            <li><a href="../Movies/movies.html" class="hide-on-mobile">Movies</a></li>
+            <li><a href="../Theaters/theaters.html" class="hide-on-mobile">Theaters</a></li>
+            <li><a href="../Offers/offers.html" class="hide-on-mobile">Offers</a></li>
+        </ul>
+        <ul class="nav-links right">
+            <li><a href="../Auth/login.html" class="nav-btn hide-on-mobile">Sign In</a></li>
+            <li><a href="../Auth/signup.html" class="nav-btn hide-on-mobile">Sign Up</a></li>
+            <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
             <li><a href="../Movies/movies.html">Movies</a></li>
             <li><a href="../Theaters/theaters.html">Theaters</a></li>
             <li><a href="../Offers/offers.html">Offers</a></li>
-            <li><a href="../Membership/membership.html">Membership</a></li>
-        </ul>
-    </div>
-    <div class="right">
-        <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
-            <li><a href="../Auth/login.html" class="nav-btn">Sign In</a></li>
-            <li><a href="../Auth/signup.html" class="nav-btn">Sign Up</a></li>
+            <li><a href="../Auth/login.html">Sign In</a></li>
+            <li><a href="../Auth/signup.html">Sign Up</a></li>
         </ul>
     </div>
 </nav>
 <body>
-    <div class="theaters-page">
-        <div class="filters">
-            <h2>Find Theaters</h2>
-            <input type="text" placeholder="Search theaters..." class="search-input">
-
-            <div class="filter-group">
-                <h3>Location</h3>
-                <ul class="filter-options">
-                    <li class="active">All Locations</li>
-                    <li>Downtown</li>
-                    <li>North</li>
-                    <li>South</li>
-                    <li>East</li>
-                    <li>West</li>
-                </ul>
+    <div class="cards-container">
+        <!-- Filters Column -->
+        <aside class="filters">
+            <div class="filters-header">
+                <h2>Find Theater</h2>
+                <button class="toggle-filters-btn show-on-mobile" onclick="toggleFilters()">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
+            <div class="filters-content">
+                <div class="filter-group">
+                    <h3>Location</h3>
+                    <ul class="filter-list">
+                        <li class="active">All Locations</li>
+                        <li>Downtown</li>
+                        <li>North</li>
+                        <li>South</li>
+                        <li>East</li>
+                        <li>West</li>
+                    </ul>
+                </div>
 
-            <div class="filter-group">
-                <h3>Features</h3>
-                <ul class="filter-options">
-                    <li class="active">All Features</li>
-                    <li>IMAX</li>
-                    <li>Dolby Atmos</li>
-                    <li>4DX</li>
-                    <li>VIP</li>
-                    <li>Recliner</li>
-                </ul>
+                <div class="filter-group">
+                    <h3>Features</h3>
+                    <ul class="filter-list">
+                        <li class="active">All Features</li>
+                        <li>IMAX</li>
+                        <li>Dolby Atmos</li>
+                        <li>4DX</li>
+                        <li>VIP</li>
+                        <li>Recliner</li>
+                    </ul>
             </div>
-        </div>
+            </div>
+            
+        </aside>
 
-        <div class="theaters-list">
-            <div class="theaters-header">
+        <!-- Movies Column -->
+        <main class="main-coulumn">
+            <div class="header">
                 <h2>Our Theaters</h2>
-                <p class="result-count">5 theaters found</p>
             </div>
 
-            <div class="theater-cards">
+            <div class="cards-grid">
                 <div class="theater-card">
                     <img src="../../Images/Halls/hall 1.jpg" alt="Cinemax Plaza">
                     <div class="theater-info">
@@ -81,34 +95,41 @@
                         <a href="#" class="btn">View Shows</a>
                     </div>
                 </div>
-
                 <div class="theater-card">
-                    <img src="../../Images/Halls/hall 2.jpg" alt="Cinemax Grand">
+                    <img src="../../Images/Halls/hall 1.jpg" alt="Cinemax Plaza">
                     <div class="theater-info">
-                        <div class="rating"><i class="fas fa-star"></i> 4.6</div>
-                        <h3>CINEMAX Grand</h3>
-                        <h6><i class="fas fa-location-dot"></i> North</h6>
-                        <p>456 Park Avenue, North District</p>
-                        <p>12 Screens</p>
-                        <p>(555) 234-5678</p>
+                        <div class="rating"><i class="fas fa-star"></i> 4.8</div>
+                        <h3>CINEMAX Plaza</h3>
+                        <h6><i class="fas fa-location-dot"></i> Downtown</h6>
+                        <p>123 Main Street, Downtown</p>
+                        <p>8 Screens</p>
+                        <p>(555) 123-4567</p>
                         <div class="tags">
-                            <span>4DX</span>
-                            <span>SCREENX</span>
-                            <span>Recliner</span>
+                            <span>IMAX</span>
+                            <span>Dolby Atmos</span>
+                            <span>VIP</span>
                         </div>
                         <a href="#" class="btn">View Shows</a>
                     </div>
                 </div>
+                <!-- Add more movie cards as needed -->
             </div>
-        </div>
+        </main>
     </div>
+<script>
+    function toggleFilters() {
+        const content = document.querySelector('.filters-content');
+        content.classList.toggle('active');
+    }
+</script>
+
+<script src="../../Style/main.js"></script>
 </body>
 <footer>
     <div class="container">
         <div>
             <h1>Cinemax</h1>
             <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
-            <div></div>
         </div>
         <div>
             <h1>Quick Links</h1>

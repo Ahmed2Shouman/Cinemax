@@ -9,27 +9,33 @@
     <link rel="stylesheet" href="./book.css">
 </head>
 <nav>
-    <div class="left">
-        <ul class="nav-links">
+    <div class="nav-container">
+        <ul class="nav-links left">
             <a href="../Home/index.html" class="logo">Cinemax</a>
+            <li><a href="../Movies/movies.html" class="hide-on-mobile">Movies</a></li>
+            <li><a href="../Theaters/theaters.html" class="hide-on-mobile">Theaters</a></li>
+            <li><a href="../Offers/offers.html" class="hide-on-mobile">Offers</a></li>
+        </ul>
+        <ul class="nav-links right">
+            <li><a href="../Auth/login.html" class="nav-btn hide-on-mobile">Sign In</a></li>
+            <li><a href="../Auth/signup.html" class="nav-btn hide-on-mobile">Sign Up</a></li>
+            <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
             <li><a href="../Movies/movies.html">Movies</a></li>
             <li><a href="../Theaters/theaters.html">Theaters</a></li>
             <li><a href="../Offers/offers.html">Offers</a></li>
-            <li><a href="../Membership/membership.html">Membership</a></li>
-        </ul>
-    </div>
-    <div class="right">
-        <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
-            <li><a href="../Auth/login.html" class="nav-btn">Sign In</a></li>
-            <li><a href="../Auth/signup.html" class="nav-btn">Sign Up</a></li>
+            <li><a href="../Auth/login.html">Sign In</a></li>
+            <li><a href="../Auth/signup.html">Sign Up</a></li>
         </ul>
     </div>
 </nav>
 <body>
     <div class="top" id="top-slider">
         <div class="details" id="movie-details">
-            <h2 class="highlighted">Now Playing</h2>
             <h1>Sinners</h1>
             <div class="MD">
                 <h6><i class="fas fa-calendar-alt"></i> 2025</h6>
@@ -42,74 +48,112 @@
     <div class="date-select">
         <h1>Select Date</h1>
         <div class="row">
-            <button class="highlighted">Today</button>
-            <button class="normal-btn">Tomorrow</button>
-            <button class="normal-btn">Wed, 14</button>
-            <button class="normal-btn">Thu, 15</button>
-            <button class="normal-btn">Fri, 16</button>
+            <button class="selected btn">Today</button>
+            <button class="normal btn">Tomorrow</button>
+            <button class="normal btn">Wed, 14</button>
+            <button class="normal btn">Thu, 15</button>
+            <button class="normal btn">Fri, 16</button>
         </div>
         <h1>Select Time</h1>
         <div class="row">
-            <button class="highlighted">14:30</button>
-            <button class="normal-btn">16:00</button>
-            <button class="normal-btn">18:30</button>
-            <button class="normal-btn">20:45</button>
-            <button class="normal-btn">22:15</button>
+            <button class="selected btn">14:30</button>
+            <button class="normal btn">16:00</button>
+            <button class="normal btn">18:30</button>
+            <button class="normal btn">20:45</button>
+            <button class="normal btn">22:15</button>
         </div>
     </div>
     <div class="seat-select">
         <h1>Select Seats</h1>
         <h2 class="Screen">Screen</h2>
         <div class="seat-map">
-            <div class="seating-chart">
-                <div class="row">
-                    <div class="row-label">A</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+            <div class="seat-row">
+                <h3 class="row-label">A</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">B</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">C</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">D</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">B</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
                 </div>
-                <div class="row">
-                    <div class="row-label">E</div>
-                        <div class="row-seats">
-                            <button>1</button><button>2</button><button>3</button><button class="taken">4</button><button>5</button><button class="taken">6</button><button>7</button><button>8</button><button class="taken">9</button><button>10</button>
-                        </div>
-                    </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
                 </div>
-                <div class="legend">
-                    <span><span class="legend-box available"></span> Available</span>
-                    <span><span class="legend-box selected"></span> Selected</span>
-                    <span><span class="legend-box taken"></span> Taken</span>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">C</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">D</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
+                </div>
+            </div>
+            <div class="seat-row">
+                <h3 class="row-label">E</h3>
+                <div class="seat-group">
+                    <button>1</button><button>2</button><button>3</button>
+                </div>
+                <div class="seat-group">
+                    <button>4</button><button>5</button><button>6</button>
+                </div>
+                <div class="seat-group">
+                    <button>7</button><button>8</button><button>9</button>
                 </div>
             </div>
         </div>
-
+        <div class="color-code">
+            <div class="legend">
+                <div class="line"><div class="legend-box available"></div> <h3>Available</h3></div>
+                <div class="line"><div class="legend-box selected-box"></div> <h3>Selected</h3></div>
+                <div class="line"><div class="legend-box taken"></div> <h3>Taken</h3></div>
+            </div>
+        </div>
+        
     </div>
+    <div class="booking-summary">
+            <h2>Booking Summary</h2>
+            <p><strong>Movie</strong> <span class="summary-movie">Sinners</span></p>
+            <p><strong>Date</strong> <span class="summary-date">Today</span></p>
+            <p><strong>Time</strong> <span class="summary-time">18:30</span></p>
+            <p><strong>Seats</strong> <span class="summary-seats">No seats selected</span></p>
+            <button class="confirm-btn disabled">Select at least one seat</button>
+        </div>
+    <script src="../../Style/main.js"></script>
+    <script>
+        const top = document.getElementById("top-slider");
+        top.style.backgroundImage = `linear-gradient(to bottom, transparent, black), url('${"../../Images/Sinners.jpg"}')`;
+    </script>
 </body>
 <footer>
     <div class="container">
-        <div>ß
+        <div>
             <h1>Cinemax</h1>
             <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
             <div></div>
