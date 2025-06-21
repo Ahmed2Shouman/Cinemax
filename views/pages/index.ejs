@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinemax</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="/Pages/Home/style.css">
+    <link rel="stylesheet" href="/Style/Pages/Home/style.css">
     <link rel="stylesheet" href="/Style/main.css">
     
 </head>
@@ -29,7 +29,7 @@
         <h1>Now Showing</h1>
         <div class="movie-slider-wrapper" style="position: relative; width: 100%;">
             <div class="movie-slider" id="movieSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth;">
-                <a href="/Pages/Book/book.html" class="movie-card">
+                <a href="/book" class="movie-card">
                     <img src="/Images/sinners-poster.jpg" alt="sinners-poster">
                     <h2>Sinners</h2>
                     <div class="row">
@@ -38,8 +38,7 @@
                     </div>
                     <h6><i class="fas fa-film"></i> genre</h6>
                 </a>
-
-                <a href="/Pages/Book/book.html" class="movie-card">
+                <a href="/book" class="movie-card">
                     <img src="/Images/sinners-poster.jpg" alt="sinners-poster">
                     <h2>Sinners</h2>
                     <div class="row">
@@ -48,7 +47,7 @@
                     </div>
                     <h6><i class="fas fa-film"></i> genre</h6>
                 </a>
-                <a href="/Pages/Book/book.html" class="movie-card">
+                <a href="/book" class="movie-card">
                     <img src="/Images/sinners-poster.jpg" alt="sinners-poster">
                     <h2>Sinners</h2>
                     <div class="row">
@@ -57,7 +56,7 @@
                     </div>
                     <h6><i class="fas fa-film"></i> genre</h6>
                 </a>
-                <a href="/Pages/Book/book.html" class="movie-card">
+                <a href="/book" class="movie-card">
                     <img src="/Images/sinners-poster.jpg" alt="sinners-poster">
                     <h2>Sinners</h2>
                     <div class="row">
@@ -78,33 +77,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/Pages/Home/index.js"></script>
+    <script src="/Scripts/index.js"></script>
     <script src="/Scripts/main.js"></script>
+    <%- include('../partials/footer') %>
 </body>
-<footer>
-    <div class="container">
-        <div>
-            <h1>Cinemax</h1>
-            <p>The ultimate movie experience with state-of-the-art technology and premium comfort.</p>
-        </div>
-        <div>
-            <h1>Quick Links</h1>
-            <a href="/Pages/Movies/movies.html">Movies</a>
-            <a href="/Pages/Theaters/theaters.html">Theaters</a>
-            <a href="/Pages/Movies/movies.html">Upcoming Releases</a>
-            <a href="/Pages/Offers/offers.html">Offers & Promotions</a>
-            <a href="/Pages/Offers/offers.html">Gift Cards</a>
-        </div>
-        <div>
-            <h1>Support</h1>
-            <a href="/Pages/Profile/profile.html">My Account</a>
-            <a href="/Pages/Help/help.html">Help Center</a>
-            <a href="/Pages/Help/contact-us.html">Contact Us</a>
-            <a href="/Pages/Help/faqs.html">FAQs</a>
-            <a href="/Pages/Help/privacy.html">Privacy Policy</a>
-        </div>
-    </div>
-    <hr>
-    <p class="cr">© 2025 CINEMAX. All Rights Reserved.</p>
-</footer>
 </html>

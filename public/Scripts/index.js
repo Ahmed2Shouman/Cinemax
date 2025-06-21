@@ -5,7 +5,7 @@ const movies = [
     time: "2h 30m",
     rating: "8.5",
     description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
-    image: "../../Images/Sinners.jpg",
+    image: "/Images/Sinners.jpg",
     trailer: "https://www.youtube.com/watch?v=bKGxHflevuk"
   },
   {
@@ -14,7 +14,7 @@ const movies = [
     time: "2h 15m",
     rating: "7.9",
     description: "A ship crew faces a mysterious force in uncharted waters.",
-    image: "../../Images/thunderbolts.jpg",
+    image: "/Images/thunderbolts.jpg",
     trailer: "https://www.youtube.com/watch?v=VlaAD_F_6ao"
   },
 ];
@@ -37,7 +37,7 @@ function updateSlider() {
       <h6><i class="fas fa-star"></i> ${movie.rating}</h6>
     </div>
     <p>${movie.description}</p>
-    <a href="../Book/book.html" class="Button">Book Tickets</a>
+    <a href="/book" class="Button">Book Tickets</a>
     <a href="${movie.trailer}" class="Button" target="_blank">Watch Trailer</a>
   `;
 

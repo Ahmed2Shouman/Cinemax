@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Help/faqs.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <main class="faq-container">
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+        <div class="faq-item">
+            <h2 class="faq-question" onclick="toggleAnswer(this)">How do I book a movie ticket?</h2>
+            <div class="faq-answer">You can book tickets by selecting your movie from the homepage or movies section, choosing a showtime, and completing payment through our secure system.</div>
+        </div>
+        <div class="faq-item">
+            <h2 class="faq-question" onclick="toggleAnswer(this)">Can I cancel or refund my booking?</h2>
+            <div class="faq-answer">Tickets can be canceled up to 2 hours before the showtime through your account under 'My Bookings'. Refunds are processed within 5–7 business days.</div>
+        </div>
+        <div class="faq-item">
+            <h2 class="faq-question" onclick="toggleAnswer(this)">Do you offer group discounts?</h2>
+            <div class="faq-answer">Yes, we offer group discounts for bookings of 10 or more tickets. Please contact our customer support for more information.</div>
+        </div>
+    </main>
+<script>
+    function toggleAnswer(element) {
+        const answer = element.nextElementSibling;
+        answer.style.display = (answer.style.display === "block") ? "none" : "block";
+    }
+</script>
+<script src="/Scripts/main.js"></script>
+<%- include('../partials/footer') %>
+</body>
+</html>
