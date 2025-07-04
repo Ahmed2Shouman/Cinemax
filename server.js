@@ -2,8 +2,11 @@ import express from 'express';
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
 import bodyParser from 'body-parser';
+import fs from 'fs/promises';
+import path from 'path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3000;
@@ -14,9 +17,17 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.get('/', (req, res) => {
-  res.render('pages/index');
-  console.log('Home page requested');
+app.get('/', async (req, res) => {
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    console.log('Home page requested. Movies:', movies);
+    res.render('pages/index', { movies });
+  } catch (err) {
+    console.error('Error loading movies:', err);
+    res.status(500).send('Failed to load movies');
+  }
 });
 
 app.get('/sign-in', (req, res) => {
@@ -77,4 +88,16 @@ app.get('/profile', (req, res) => {
 // 👇 START THE SERVER
 app.listen(port, () => {
   console.log(`✅ Server is running on http://localhost:${port}`);
+});
+// API endpoint to serve movies JSON data directly
+app.get('/api/movies', async (req, res) => {
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    res.json(movies);
+  } catch (err) {
+    console.error('Error loading movies:', err);
+    res.status(500).send('Failed to load movie data');
+  }
 });
