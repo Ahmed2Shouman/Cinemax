@@ -22,7 +22,7 @@ app.get('/', async (req, res) => {
     const dataPath = path.join(__dirname, 'data/movies.json');
     const data = await fs.readFile(dataPath, 'utf-8');
     const movies = JSON.parse(data);
-    console.log('Home page requested. Movies:', movies);
+    console.log('Home page requested.');
     res.render('pages/index', { movies });
   } catch (err) {
     console.error('Error loading movies:', err);
@@ -40,14 +40,37 @@ app.get('/sign-up', (req, res) => {
   console.log('signup page requested');
 });
 
-app.get('/book', (req, res) => {
-  res.render('pages/book');
-  console.log('book page requested');
+app.get('/book', async (req, res) => {
+  const movieName = req.query.name;
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    const movie = movies.find(m => m.title.toLowerCase() === movieName?.toLowerCase());
+
+    if (!movie) {
+      return res.status(404).send('Movie not found');
+    }
+
+    res.render('pages/book', { movie });
+    console.log(`book page requested for: ${movie.title}`);
+  } catch (err) {
+    console.error('Error loading movie for booking:', err);
+    res.status(500).send('Failed to load movie data');
+  }
 });
 
-app.get('/movies', (req, res) => {
-  res.render('pages/movies');
+app.get('/movies', async (req, res) => {
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    res.render('pages/movies', { movies });
   console.log('movies page requested');
+  } catch (err) {
+    console.error('Error loading movies:', err);
+    res.status(500).send('Failed to load movies');
+  }
 });
 
 app.get('/offers', (req, res) => {

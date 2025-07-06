@@ -1,5 +1,4 @@
 .top {
-    background-image: linear-gradient(to bottom, transparent, black), url(/Images/Sinners.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +43,7 @@
 }
 
 .date-select .row {
-    display: inline-block;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -230,6 +229,10 @@
         border-radius: 0.25rem;
         padding: 0.5rem 0.75rem;
         font-size: 0.7rem;
+    }
+
+    .date-select .row {
+        display: inline-block;
     }
     
 }

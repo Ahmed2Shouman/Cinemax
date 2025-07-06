@@ -30,7 +30,7 @@
         <div class="movie-slider-wrapper" style="position: relative; width: 100%;">
             <div class="movie-slider" id="movieSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth;">
                 <% movies.forEach(movie => { %>
-                  <a href="/book" class="movie-card">
+                  <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
                     <img src="<%= movie.poster %>" alt="<%= movie.title %> poster">
                     <h2><%= movie.title %></h2>
                     <div class="row">
