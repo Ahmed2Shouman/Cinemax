@@ -116,3 +116,21 @@
   color: gray;
   margin-top: 40px;
 }
+
+.add-movie-btn {
+  background-color: #2d2d2d;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-left: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.add-movie-btn:hover {
+  background-color: #444;
+}

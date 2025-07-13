@@ -134,10 +134,6 @@ app.get('/admin/movies', async (req, res) => {
   }
 });
 
-// 👇 START THE SERVER
-app.listen(port, () => {
-  console.log(`✅ Server is running on http://localhost:${port}`);
-});
 // API endpoint to serve movies JSON data directly
 app.get('/api/movies', async (req, res) => {
   try {
@@ -149,4 +145,31 @@ app.get('/api/movies', async (req, res) => {
     console.error('Error loading movies:', err);
     res.status(500).send('Failed to load movie data');
   }
+});
+
+// Delete a movie by ID
+app.delete('/api/movies/:id', async (req, res) => {
+  try {
+    const movieId = req.params.id;
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+
+    const updatedMovies = movies.filter(movie => String(movie.id) !== String(movieId));
+
+    if (updatedMovies.length === movies.length) {
+      return res.status(404).json({ error: 'Movie not found' });
+    }
+
+    await fs.writeFile(dataPath, JSON.stringify(updatedMovies, null, 2));
+    res.status(200).json({ message: 'Movie deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting movie:', err);
+    res.status(500).json({ error: 'Failed to delete movie' });
+  }
+});
+
+// 👇 START THE SERVER
+app.listen(port, () => {
+  console.log(`✅ Server is running on http://localhost:${port}`);
 });
