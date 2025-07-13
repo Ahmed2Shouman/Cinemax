@@ -24,14 +24,14 @@
 
                 <h4>Genre</h4>
                 <ul class="filter-list">
-                    <li class="active">All Genres</li>
-                    <li>Action</li>
-                    <li>Adventure</li>
-                    <li>Comedy</li>
-                    <li>Drama</li>
-                    <li>Horror</li>
-                    <li>Sci-Fi</li>
-                    <li>Thriller</li>
+                    <li class="active" onclick="filterSelected(this)">All Genres</li>
+                    <li onclick="filterSelected(this)">Action</li>
+                    <li onclick="filterSelected(this)">Adventure</li>
+                    <li onclick="filterSelected(this)">Comedy</li>
+                    <li onclick="filterSelected(this)">Drama</li>
+                    <li onclick="filterSelected(this)">Horror</li>
+                    <li onclick="filterSelected(this)">Sci-Fi</li>
+                    <li onclick="filterSelected(this)">Thriller</li>
                 </ul>
 
                 <h4>Sort By</h4>
@@ -71,8 +71,43 @@
         content.classList.toggle('active');
     }
 
-    function filterSelected(filter) {
-        
+    function filterSelected(selectedElement) {
+        const allFilters = document.querySelectorAll('.filter-list li');
+        allFilters.forEach(li => li.classList.remove('active'));
+        selectedElement.classList.add('active');
+
+        const genre = selectedElement.textContent.trim();
+        fetchFilteredMovies(genre);
+    }
+
+    function fetchFilteredMovies(genre) {
+        fetch('/api/movies')
+            .then(res => res.json())
+            .then(data => {
+                const cardsGrid = document.querySelector('.cards-grid');
+                cardsGrid.innerHTML = '';
+
+                const filtered = genre === 'All Genres' ? data : data.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+
+                filtered.forEach(movie => {
+                    const movieCard = document.createElement('a');
+                    movieCard.href = `/book?name=${encodeURIComponent(movie.title)}`;
+                    movieCard.className = 'movie-card';
+
+                    movieCard.innerHTML = `
+                        <img src="${movie.poster}" alt="${movie.title} poster">
+                        <h2>${movie.title}</h2>
+                        <div class="row">
+                            <h6><i class="fas fa-star"></i> ${movie.rating}</h6>
+                            <h6><i class="fas fa-clock"></i> ${movie.duration}</h6>
+                        </div>
+                        <h6><i class="fas fa-film"></i> ${movie.genre}</h6>
+                    `;
+
+                    cardsGrid.appendChild(movieCard);
+                });
+            })
+            .catch(err => console.error('Error fetching movies:', err));
     }
 </script>
 <script src="/Scripts/main.js"></script>

@@ -10,25 +10,32 @@
     
 </head>
 <body>
+    <!-- Navbar -->
     <%- include('../partials/navbar') %>
-    <div class="top" id="top-slider">
+    
+    <!-- Slider -->
+    <div id="top-slider" style="background-image: linear-gradient(to bottom, transparent, black), url('<%= movies[0].banner %>');">
         <div class="details" id="movie-details">
             <h2 class="highlighted">Now Playing</h2>
-            <h1>Sinners</h1>
+            <h1><%= movies[0].title %></h1>
             <div class="MD">
-                <h6><i class="fas fa-calendar-alt"></i> 2025</h6>
-                <h6><i class="fas fa-clock"></i> time</h6>
-                <h6><i class="fas fa-star"></i> rate</h6>
+                <h6><i class="fas fa-film"></i> <%=movies[0].genre%></h6>
+                <h6><i class="fas fa-clock"></i> <%=movies[0].duration%></h6>
+                <h6><i class="fas fa-star"></i> <%=movies[0].rating%></h6>
             </div>
-            <p>Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
-            <a href="" class="Button">Book Tickets</a>
-            <a href="" class="Button" target="_blank">Watch Trailer</a>
+            <p><%=movies[0].description%></p>
+            <a href="/book?name=<%= encodeURIComponent(movies[0].title) %>" class="Button">Book Tickets</a>
+            <a href="<%= movies[0].trailer %>" class="Button" target="_blank">Watch Trailer</a>
         </div>
     </div>
+
+    <!-- Now Showing-->
     <div class="movie-select">
         <h1>Now Showing</h1>
-        <div class="movie-slider-wrapper" style="position: relative; width: 100%;">
-            <div class="movie-slider" id="movieSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth;">
+        <div class="movie-slider-wrapper" style="position: relative; width: 100%;"> <!-- Slider -->
+            <div id="movieSlider">
+
+                <!-- adds Movie Cards -->
                 <% movies.forEach(movie => { %>
                   <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
                     <img src="<%= movie.poster %>" alt="<%= movie.title %> poster">
@@ -40,8 +47,11 @@
                     <h6><i class="fas fa-film"></i> <%= movie.genre %></h6>
                   </a>
                 <% }) %>
+                
             </div>
         </div>
+
+        <!-- Slider Btns -->
         <div class="slider-controls">
             <button class="scroll-btn left" onclick="scrollSlider(-1)">
                 <i class="fas fa-chevron-left"></i>
@@ -51,9 +61,10 @@
             </button>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/Scripts/index.js"></script>
     <script src="/Scripts/main.js"></script>
+
+    <!-- Footer -->
     <%- include('../partials/footer') %>
 </body>
 </html>

@@ -1,22 +1,24 @@
 let movies = [];
 let current = 0;
 
+// fetching movies for the update slider uunction
 async function fetchMovies() {
   try {
     const response = await fetch('/api/movies');
     movies = await response.json();
     updateSlider();
-    setInterval(updateSlider, 5000);
+    setInterval(updateSlider, 5000); // call update slider every 5 sec.
   } catch (err) {
     console.error('Failed to fetch movies:', err);
   }
 }
 
+// updates the top slider 
 function updateSlider() {
   const top = document.getElementById("top-slider");
   const details = document.getElementById("movie-details");
 
-  if (!movies.length) return;
+  if (!movies.length) return; // if movies.length = 0 return
 
   const movie = movies[current];
   top.style.backgroundImage = `linear-gradient(to bottom, transparent, black), url('${movie.banner}')`;
@@ -30,19 +32,21 @@ function updateSlider() {
       <h6><i class="fas fa-star"></i> ${movie.rating}</h6>
     </div>
     <p>${movie.description}</p>
-    <a href="/book" class="Button">Book Tickets</a>
+    <a href="/book?name=${movie.title}" class="Button">Book Tickets</a>
     <a href="${movie.trailer}" class="Button" target="_blank">Watch Trailer</a>
   `;
 
-  current = (current + 1) % movies.length;
+  current = (current + 1) % movies.length; // once current reaches length loop back to 0
 }
 
+// makes the bottom slider btns function
 function scrollSlider(direction) {
   const slider = document.getElementById('movieSlider');
   const scrollAmount = 300;
   slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
+// auto scrolls the bottom slider
 function autoScrollSlider() {
   const slider = document.getElementById('movieSlider');
   const scrollAmount = 300;

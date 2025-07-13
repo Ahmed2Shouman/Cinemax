@@ -1,3 +1,5 @@
+
+// makes the sidebar btn function
 function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');
   const toggleButton = document.querySelector('.toggle-btn');

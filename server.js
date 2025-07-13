@@ -108,6 +108,11 @@ app.get('/profile', (req, res) => {
   console.log('profile page requested');
 });
 
+app.get('/dashboard', (req, res) => {
+  res.render('pages/dashboard');
+  console.log('dashboard page requested');
+});
+
 // 👇 START THE SERVER
 app.listen(port, () => {
   console.log(`✅ Server is running on http://localhost:${port}`);

@@ -28,8 +28,8 @@
 }
 
 .top p {
-    font-size: 2rem;
-    margin-top: 2rem;
+    font-size: 1.5rem;
+    margin: 2rem 0;
     max-width: 700px;
     padding-right: 20px;
 }
@@ -50,7 +50,7 @@
     margin-bottom: 50px;
 }
 
-.normal {
+.btn {
     background-color: #2b2f3a;
     border: none;
     color: white;
@@ -60,28 +60,17 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s ease-in-out;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-.normal:hover {
+.btn:hover {
     background-color: #3a3f4d;
     color: white;
 }
 
 .selected {
     background-color: #d33b2d;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
 }
 
 .seat-select {
@@ -107,20 +96,15 @@
     border-radius: 1rem;
 }
 
-.seat-group button {
-    background-color: #2b2f3a;
+.seat {
+    background-color: #a6a6a6ff;
     border: none;
-    color: white;
+    color: black;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.2s ease-in-out;
-}
-
-.seat-group button:hover {
-    background-color: #3a3f4d;
-    color: white;
 }
 
 .seat-row {
@@ -157,7 +141,7 @@
 }
 
 .legend-box.available {
-    background-color: #2b2f3a;
+    background-color: #a6a6a6ff;
 }
 
 .legend-box.selected-box {
@@ -199,11 +183,25 @@
     margin-top: 15px;
     padding: 10px;
     width: 100%;
-    background-color: #1e293b;
-    color: #94a3b8;
+    background-color: #e74c3c;
+    color: white;
     border: none;
     border-radius: 5px;
+}
+
+.disabled {
+    background-color: #1e293b;
     cursor: not-allowed;
+}
+
+.seat.taken {
+    background-color: #555b6e;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #e74c3c;
+    color: white;
 }
 
 @media (max-width: 768px) {

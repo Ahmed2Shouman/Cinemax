@@ -1,5 +1,4 @@
-.top {
-    background-image: linear-gradient(to bottom, transparent, black), url(/Images/Sinners.jpg);
+#top-slider {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -23,12 +22,12 @@
     font-size: 1rem;
 }
 
-.top h1 {
+#top-slider h1 {
     font-size: 4rem;
     margin: 1rem 0;
 }
 
-.top p {
+#top-slider p {
     font-size: 1.5rem;
     margin: 2rem 0;
     max-width: 700px;
@@ -94,7 +93,10 @@
     text-align: center;
 }
 
-.movie-slider {
+#movieSlider {
+    display: flex; 
+    overflow-x: auto; 
+    scroll-behavior: smooth;
     padding: 30px 50px;
     display: flex;
     gap: 20px;
