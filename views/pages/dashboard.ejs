@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Home</title>
+    <title>Cinemax Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/Style/Pages/Dashboard/style.css">
     <link rel="stylesheet" href="/Style/main.css">
 </head>
 <body>
-    <%-include('../partials/navbar') %>
+    <%-include('../partials/adminNav') %>
     <div class="dashboard-container">
         <h1 class="dashboard-title">Admin Dashboard</h1>
 
         <div class="dashboard-stats">
             <div class="stat-card">
                 <h2>Total Movies</h2>
-                <p>24</p>
+                <p><%= movies.length%></p>
             </div>
             <div class="stat-card">
                 <h2>Total Bookings</h2>
@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
-    <%-include('../partials/footer') %>
+    <script src="/Scripts/main.js"></script>
+    <%-include('../partials/cr') %>
 </body>
 </html>

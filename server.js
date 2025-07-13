@@ -108,9 +108,30 @@ app.get('/profile', (req, res) => {
   console.log('profile page requested');
 });
 
-app.get('/dashboard', (req, res) => {
-  res.render('pages/dashboard');
-  console.log('dashboard page requested');
+app.get('/admin', async (req, res) => {
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    console.log('dashboard page requested with movies');
+    res.render('pages/dashboard', { movies });
+  } catch (err) {
+    console.error('Error loading movies for dashboard:', err);
+    res.status(500).send('Failed to load dashboard data');
+  }
+});
+
+app.get('/admin/movies', async (req, res) => {
+  try {
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(data);
+    console.log('dashboard page requested with movies');
+    res.render('pages/manageMovies', { movies });
+  } catch (err) {
+    console.error('Error loading movies for dashboard:', err);
+    res.status(500).send('Failed to load dashboard data');
+  }
 });
 
 // 👇 START THE SERVER

@@ -1,0 +1,25 @@
+<nav>
+    <div class="nav-container">
+        <ul class="nav-links left">
+            <a href="/" class="logo">Cinemax</a>
+            <li><a href="/admin/movies" class="hide-on-mobile">Movies</a></li>
+            <li><a href="/admin/users" class="hide-on-mobile">Users</a></li>
+            <li><a href="/admin/bookings" class="hide-on-mobile">Bookings</a></li>
+            <li><a href="/admin/offers" class="hide-on-mobile">Offers</a></li>
+        </ul>
+        <ul class="nav-links right">
+            <li><a href="/" class="nav-btn hide-on-mobile">Sign out</a></li>
+            <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar hide-on-mobile">
+        <ul>
+            <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
+            <li><a href="/movies">Movies</a></li>
+            <li><a href="/admin/users">Users</a></li>
+            <li><a href="/admin/bookings">Bookings</a></li>
+            <li><a href="/admin/Offers">Offers</a></li>
+            <li><a href="/">Sign Out</a></li>
+        </ul>
+    </div>
+</nav>
