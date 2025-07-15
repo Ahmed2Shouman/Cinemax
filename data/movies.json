@@ -64,5 +64,16 @@
     "banner": "/Images/Banners/JW.jpeg",
     "trailer": "https://www.youtube.com/watch?v=9TJuekpo1J4",
     "description": "A research team is sent to the Jurassic Park Site B island to study the dinosaurs there, while an InGen team approaches with another agenda."
+  },
+  {
+    "id": "1752593959030",
+    "title": "Superman",
+    "genre": "Action",
+    "rating": "7.7",
+    "duration": "129",
+    "trailer": "https://youtu.be/9rA4Xa9A248",
+    "description": "Superman must reconcile his alien Kryptonian heritage with his human upbringing as reporter Clark Kent. As the embodiment of truth, justice and the human way he soon finds himself in a world that views these as old-fashioned.\r\n\r\n",
+    "poster": "/Images/Posters/poster-1752593959006-55023746.jpeg",
+    "banner": "/Images/Banners/banner-1752593959010-555523379.jpeg"
   }
 ]

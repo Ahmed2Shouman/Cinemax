@@ -4,6 +4,7 @@ import {fileURLToPath} from 'url';
 import bodyParser from 'body-parser';
 import fs from 'fs/promises';
 import path from 'path';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +17,24 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+// Define storage logic
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    if (file.fieldname === 'poster') {
+      cb(null, path.join(__dirname, 'public/Images/Posters'));
+    } else if (file.fieldname === 'banner') {
+      cb(null, path.join(__dirname, 'public/Images/Banners'));
+    }
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + uniqueSuffix + ext);
+  }
+});
+
+const upload = multer({ storage });
 
 app.get('/', async (req, res) => {
   try {
@@ -93,11 +112,6 @@ app.get('/faqs', (req, res) => {
   console.log('FAQs page requested');
 });
 
-app.get('/help', (req, res) => {
-  res.render('pages/help');
-  console.log('help page requested');
-});
-
 app.get('/privacy-policy', (req, res) => {
   res.render('pages/privacy');
   console.log('privacy policy page requested');
@@ -131,6 +145,47 @@ app.get('/admin/movies', async (req, res) => {
   } catch (err) {
     console.error('Error loading movies for dashboard:', err);
     res.status(500).send('Failed to load dashboard data');
+  }
+});
+
+app.get('/admin/add-movie', (req, res) => {
+  res.render('pages/add-movie');
+  console.log('add page requested');
+});
+
+app.post('/admin/add-movie', upload.fields([
+  { name: 'poster', maxCount: 1 },
+  { name: 'banner', maxCount: 1 }
+]), async (req, res) => {
+  try {
+    const { title, genre, rating, duration, trailer, description } = req.body;
+
+    const posterPath = '/Images/Posters/' + req.files['poster'][0].filename;
+    const bannerPath = '/Images/Banners/' + req.files['banner'][0].filename;
+
+    const newMovie = {
+      id: Date.now().toString(),
+      title,
+      genre,
+      rating,
+      duration,
+      trailer,
+      description,
+      poster: posterPath,
+      banner: bannerPath
+    };
+
+    const dataPath = path.join(__dirname, 'data/movies.json');
+    const fileData = await fs.readFile(dataPath, 'utf-8');
+    const movies = JSON.parse(fileData);
+
+    movies.push(newMovie);
+    await fs.writeFile(dataPath, JSON.stringify(movies, null, 2));
+
+    res.redirect('/admin');
+  } catch (err) {
+    console.error('Failed to save movie:', err);
+    res.status(500).send('Internal Server Error');
   }
 });
 
