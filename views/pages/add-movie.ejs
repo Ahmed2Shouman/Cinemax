@@ -13,7 +13,7 @@
 
   <main class="add-movie-container">
     <h1 class="page-title">Add New Movie</h1>
-    <form action="/admin/add-movie" method="POST" class="add-movie-form" enctype="multipart/form-data">
+    <form action="/admin/add-movie" method="POST" class="add-movie-form">
       <div class="form-group">
         <label for="title">Movie Title</label>
         <input type="text" id="title" name="title" required>
@@ -35,13 +35,18 @@
       </div>
 
       <div class="form-group">
-        <label for="poster">Poster Image</label>
-        <input type="file" id="poster" name="poster" accept="image/*" required>
+        <label for="release_date">Release Date</label>
+        <input type="date" id="release_date" name="release_date" required>
       </div>
 
       <div class="form-group">
-        <label for="banner">Banner Image</label>
-        <input type="file" id="banner" name="banner" accept="image/*" required>
+        <label for="poster">Poster Image URL</label>
+        <input type="url" id="poster" name="poster" required>
+      </div>
+
+      <div class="form-group">
+        <label for="banner">Banner Image URL</label>
+        <input type="url" id="banner" name="banner" required>
       </div>
 
       <div class="form-group">

@@ -52,7 +52,7 @@
             <div class="cards-grid">
                 <% movies.forEach(movie => { %>
                   <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
-                    <img src="<%= movie.poster %>" alt="<%= movie.title %> poster">
+                    <img src="<%= movie.poster_url %>" alt="<%= movie.title %> poster">
                     <h2><%= movie.title %></h2>
                     <div class="row">
                       <h6><i class="fas fa-star"></i> <%= movie.rating %></h6>
@@ -95,7 +95,7 @@
                     movieCard.className = 'movie-card';
 
                     movieCard.innerHTML = `
-                        <img src="${movie.poster}" alt="${movie.title} poster">
+                        <img src="${movie.poster_url}" alt="${movie.title} poster">
                         <h2>${movie.title}</h2>
                         <div class="row">
                             <h6><i class="fas fa-star"></i> ${movie.rating}</h6>

@@ -13,8 +13,9 @@
     <!-- Navbar -->
     <%- include('../partials/navbar') %>
     
+    <% if (typeof movies !== 'undefined' && movies.length > 0) { %>
     <!-- Slider -->
-    <div id="top-slider" style="background-image: linear-gradient(to bottom, transparent, black), url('<%= movies[0].banner %>');">
+    <div id="top-slider" style="background-image: linear-gradient(to bottom, transparent, black), url('<%= movies[0].banner_url %>');">
         <div class="details" id="movie-details">
             <h2 class="highlighted">Now Playing</h2>
             <h1><%= movies[0].title %></h1>
@@ -38,7 +39,7 @@
                 <!-- adds Movie Cards -->
                 <% movies.forEach(movie => { %>
                   <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
-                    <img src="<%= movie.poster %>" alt="<%= movie.title %> poster">
+                    <img src="<%= movie.poster_url %>" alt="<%= movie.title %> poster">
                     <h2><%= movie.title %></h2>
                     <div class="row">
                       <h6><i class="fas fa-star"></i> <%= movie.rating %></h6>
@@ -61,6 +62,12 @@
             </button>
         </div>
     </div>
+    <% } else { %>
+        <div style="text-align: center; padding: 50px; color: white;">
+            <h1>No movies currently showing</h1>
+            <p>Please check back later.</p>
+        </div>
+    <% } %>
     <script src="/Scripts/index.js"></script>
     <script src="/Scripts/main.js"></script>
 

@@ -24,7 +24,7 @@
             <% if (movies && movies.length > 0) { %>
                 <% movies.forEach(movie => { %>
                     <div class="movie-card">
-                        <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+                        <img src="<%= movie.poster_url %>" alt="<%= movie.title %> Poster">
                         <div class="movie-info">
                             <h2><%= movie.title %></h2>
                             <p><strong>Genre:</strong> <%= movie.genre %></p>

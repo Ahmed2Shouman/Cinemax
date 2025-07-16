@@ -21,7 +21,7 @@ function updateSlider() {
   if (!movies.length) return; // if movies.length = 0 return
 
   const movie = movies[current];
-  top.style.backgroundImage = `linear-gradient(to bottom, transparent, black), url('${movie.banner}')`;
+  top.style.backgroundImage = `linear-gradient(to bottom, transparent, black), url('${movie.banner_url}')`;
 
   details.innerHTML = `
     <h2 class="highlighted">Now Playing</h2>
