@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/add.css">
+</head>
+<body>
+  <%- include('../partials/adminNav') %>
+
+  <main class="add-movie-container">
+    <h1 class="page-title">Edit Theater</h1>
+    <form action="/admin/edit-theater/<%= theater.id %>?_method=PUT" method="POST" class="add-movie-form">
+      <div class="form-group">
+        <label for="name">Theater Name</label>
+        <input type="text" id="name" name="name" value="<%= theater.name %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="<%= theater.location %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contact_number">Contact Number</label>
+        <input type="text" id="contact_number" name="contact_number" value="<%= theater.contact_number %>" required>
+      </div>
+
+      <div class="form-group">
+        <label>Features</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="imax" name="features" value="IMAX" <%= theater.features && theater.features.includes('IMAX') ? 'checked' : '' %>>
+          <label for="imax">IMAX</label>
+          <input type="checkbox" id="4dx" name="features" value="4DX" <%= theater.features && theater.features.includes('4DX') ? 'checked' : '' %>>
+          <label for="4dx">4DX</label>
+          <input type="checkbox" id="gold" name="features" value="Gold" <%= theater.features && theater.features.includes('Gold') ? 'checked' : '' %>>
+          <label for="gold">Gold</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image URL</label>
+        <input type="url" id="image" name="image" value="<%= theater.image %>" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Theater</button>
+    </form>
+  </main>
+
+  <%- include('../partials/cr') %>
+  <script src="/Scripts/main.js"></script>
+</body>
+</html>

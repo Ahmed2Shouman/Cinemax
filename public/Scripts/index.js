@@ -24,7 +24,7 @@ function updateSlider() {
   top.style.backgroundImage = `linear-gradient(to bottom, transparent, black), url('${movie.banner_url}')`;
 
   details.innerHTML = `
-    <h2 class="highlighted">Now Playing</h2>
+    <h2 class="highlighted">${movie.status}</h2>
     <h1>${movie.title}</h1>
     <div class="MD">
       <h6><i class="fas fa-film"></i> ${movie.genre}</h6>

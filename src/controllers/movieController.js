@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 
 export const getHomePage = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM movies');
+    const result = await pool.query("SELECT * FROM movies WHERE status = 'NOW SHOWING'");
     res.render('pages/index', { movies: result.rows });
   } catch (err) {
     console.error('Error loading movies:', err);
@@ -40,7 +40,25 @@ export const getMoviesPage = async (req, res) => {
 
 export const getMoviesApi = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM movies');
+    const { genre, status } = req.query;
+    let query = 'SELECT * FROM movies';
+    const params = [];
+    let paramIndex = 1;
+
+    if (genre && genre !== 'All Genres') {
+      query += ` WHERE genre ILIKE $${paramIndex}`;
+      params.push(genre);
+      paramIndex++;
+    }
+
+    if (status && status !== 'ALL') {
+      query += params.length > 0 ? ' AND ' : ' WHERE ';
+      query += `status = $${paramIndex}`;
+      params.push(status);
+      paramIndex++;
+    }
+
+    const result = await pool.query(query, params);
     res.json(result.rows);
   } catch (err) {
     console.error('Error loading movies:', err);
@@ -57,7 +75,7 @@ export const addMovie = async (req, res) => {
     const movieReleaseDate = new Date(release_date);
     movieReleaseDate.setHours(0, 0, 0, 0); // Normalize to start of day
 
-    const status = movieReleaseDate > today ? 'upcoming' : 'now showing';
+    const status = movieReleaseDate > today ? 'UPCOMING' : 'NOW SHOWING';
 
     const query = `
       INSERT INTO movies (title, genre, rating, duration, trailer, description, poster_url, banner_url, release_date, status)
@@ -102,7 +120,7 @@ export const updateMovie = async (req, res) => {
     const movieReleaseDate = new Date(release_date);
     movieReleaseDate.setHours(0, 0, 0, 0); // Normalize to start of day
 
-    const status = movieReleaseDate > today ? 'upcoming' : 'now showing';
+    const status = movieReleaseDate > today ? 'UPCOMING' : 'NOW SHOWING';
 
     // Update the movie record in the database
     const query = `
@@ -111,7 +129,7 @@ export const updateMovie = async (req, res) => {
           description = $6, poster_url = $7, banner_url = $8, release_date = $9, status = $10
       WHERE id = $11
     `;
-    const values = [title, genre, rating, duration, trailer, description, poster, banner, release_date, status, movieId];
+    const values = [title, genre, rating, duration + ' min', trailer, description, poster, banner, release_date, status, movieId];
 
     const result = await pool.query(query, values);
     if (result.rowCount === 0) {

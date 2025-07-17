@@ -35,10 +35,10 @@
                 </ul>
 
                 <h4>Sort By</h4>
-                <select class="sort-select">
-                    <option>Latest</option>
-                    <option>Oldest</option>
-                    <option>Top Rated</option>
+                <select class="sort-select" onchange="sortMovies(this.value)">
+                    <option value="ALL">All Movies</option>
+                    <option value="NOW SHOWING">Now Showing</option>
+                    <option value="UPCOMING">Upcoming</option>
                 </select>
             </div>
         </aside>
@@ -46,7 +46,7 @@
         <!-- Movies Column -->
         <main class="main-coulumn">
             <div class="header">
-                <h2>All Movies</h2>
+                <h2 id="movies-header">All Movies</h2>
             </div>
 
             <div class="cards-grid">
@@ -77,19 +77,48 @@
         selectedElement.classList.add('active');
 
         const genre = selectedElement.textContent.trim();
-        fetchFilteredMovies(genre);
+        // When genre filter is applied, reset sort to "All Movies"
+        document.querySelector('.sort-select').value = 'ALL';
+        fetchMovies(genre, 'ALL');
     }
 
-    function fetchFilteredMovies(genre) {
-        fetch('/api/movies')
+    function sortMovies(status) {
+        const genre = document.querySelector('.filter-list li.active').textContent.trim();
+        fetchMovies(genre, status);
+    }
+
+    function fetchMovies(genre, status) {
+        let url = '/api/movies';
+        const params = new URLSearchParams();
+
+        if (genre !== 'All Genres') {
+            params.append('genre', genre);
+        }
+        if (status !== 'ALL') {
+            params.append('status', status);
+        }
+
+        if (params.toString()) {
+            url += `?${params.toString()}`;
+        }
+
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 const cardsGrid = document.querySelector('.cards-grid');
                 cardsGrid.innerHTML = '';
 
-                const filtered = genre === 'All Genres' ? data : data.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+                const moviesHeader = document.getElementById('movies-header');
+                if (status === 'NOW SHOWING') {
+                    moviesHeader.textContent = 'Now Showing Movies';
+                } else if (status === 'UPCOMING') {
+                    moviesHeader.textContent = 'Upcoming Movies';
+                } else {
+                    moviesHeader.textContent = 'All Movies';
+                }
 
-                filtered.forEach(movie => {
+
+                data.forEach(movie => {
                     const movieCard = document.createElement('a');
                     movieCard.href = `/book?name=${encodeURIComponent(movie.title)}`;
                     movieCard.className = 'movie-card';
@@ -109,6 +138,11 @@
             })
             .catch(err => console.error('Error fetching movies:', err));
     }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchMovies('All Genres', 'ALL');
+    });
 </script>
 <script src="/Scripts/main.js"></script>
 <%- include('../partials/footer') %>

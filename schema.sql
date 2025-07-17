@@ -11,3 +11,12 @@ CREATE TABLE movies (
     trailer VARCHAR(255),
     status VARCHAR(50) DEFAULT 'upcoming'
 );
+
+CREATE TABLE theaters (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    location VARCHAR(255),
+    contact_number VARCHAR(20),
+    features TEXT[],
+    image VARCHAR(255)
+);

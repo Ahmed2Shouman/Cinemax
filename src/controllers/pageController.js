@@ -2,8 +2,15 @@ export const getOffersPage = (req, res) => {
   res.render('pages/offers');
 };
 
-export const getTheatersPage = (req, res) => {
-  res.render('pages/theaters');
+import * as theaterModel from '../models/theaterModel.js';
+
+export const getTheatersPage = async (req, res) => {
+  try {
+    const theaters = await theaterModel.getAllTheaters();
+    res.render('pages/theaters', { theaters });
+  } catch (error) {
+    res.status(500).send('Error loading theaters page');
+  }
 };
 
 export const getContactUsPage = (req, res) => {

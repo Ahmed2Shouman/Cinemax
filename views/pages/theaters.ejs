@@ -10,94 +10,35 @@
 </head>
 <body>
     <%- include('../partials/navbar') %>
-    <div class="cards-container">
-        <!-- Filters Column -->
-        <aside class="filters">
-            <div class="filters-header">
-                <h2>Find Theater</h2>
-                <button class="toggle-filters-btn show-on-mobile" onclick="toggleFilters()">
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-            <div class="filters-content">
-                <div class="filter-group">
-                    <h3>Location</h3>
-                    <ul class="filter-list">
-                        <li class="active">All Locations</li>
-                        <li>Downtown</li>
-                        <li>North</li>
-                        <li>South</li>
-                        <li>East</li>
-                        <li>West</li>
-                    </ul>
-                </div>
+    <main class="main-column">
+        <div class="header">
+            <h2>Our Theaters</h2>
+        </div>
 
-                <div class="filter-group">
-                    <h3>Features</h3>
-                    <ul class="filter-list">
-                        <li class="active">All Features</li>
-                        <li>IMAX</li>
-                        <li>Dolby Atmos</li>
-                        <li>4DX</li>
-                        <li>VIP</li>
-                        <li>Recliner</li>
-                    </ul>
-            </div>
-            </div>
-            
-        </aside>
-
-        <!-- Movies Column -->
-        <main class="main-coulumn">
-            <div class="header">
-                <h2>Our Theaters</h2>
-            </div>
-
-            <div class="cards-grid">
-                <div class="theater-card">
-                    <img src="../../Images/Halls/hall 1.jpg" alt="Cinemax Plaza">
-                    <div class="theater-info">
-                        <div class="rating"><i class="fas fa-star"></i> 4.8</div>
-                        <h3>CINEMAX Plaza</h3>
-                        <h6><i class="fas fa-location-dot"></i> Downtown</h6>
-                        <p>123 Main Street, Downtown</p>
-                        <p>8 Screens</p>
-                        <p>(555) 123-4567</p>
-                        <div class="tags">
-                            <span>IMAX</span>
-                            <span>Dolby Atmos</span>
-                            <span>VIP</span>
+        <div class="cards-grid">
+            <% if (theaters && theaters.length > 0) { %>
+                <% theaters.forEach(function(theater) { %>
+                    <div class="theater-card">
+                        <img src="<%= theater.image %>" alt="<%= theater.name %>">
+                        <div class="theater-info">
+                            <h3><%= theater.name %></h3>
+                            <h6><i class="fas fa-location-dot"></i> <%= theater.location %></h6>
+                            <p>Contact: <%= theater.contact_number %></p>
+                            <div class="tags">
+                                <% if (theater.features && theater.features.length > 0) { %>
+                                    <% theater.features.forEach(function(feature) { %>
+                                        <span><%= feature %></span>
+                                    <% }); %>
+                                <% } %>
+                            </div>
                         </div>
-                        <a href="#" class="btn">View Shows</a>
                     </div>
-                </div>
-                <div class="theater-card">
-                    <img src="../../Images/Halls/hall 1.jpg" alt="Cinemax Plaza">
-                    <div class="theater-info">
-                        <div class="rating"><i class="fas fa-star"></i> 4.8</div>
-                        <h3>CINEMAX Plaza</h3>
-                        <h6><i class="fas fa-location-dot"></i> Downtown</h6>
-                        <p>123 Main Street, Downtown</p>
-                        <p>8 Screens</p>
-                        <p>(555) 123-4567</p>
-                        <div class="tags">
-                            <span>IMAX</span>
-                            <span>Dolby Atmos</span>
-                            <span>VIP</span>
-                        </div>
-                        <a href="#" class="btn">View Shows</a>
-                    </div>
-                </div>
-                <!-- Add more movie cards as needed -->
-            </div>
-        </main>
-    </div>
-<script>
-    function toggleFilters() {
-        const content = document.querySelector('.filters-content');
-        content.classList.toggle('active');
-    }
-</script>
+                <% }); %>
+            <% } else { %>
+                <p>No theaters available.</p>
+            <% } %>
+        </div>
+    </main>
 
 <script src="/Scripts/main.js"></script>
 <%- include('../partials/footer') %>
