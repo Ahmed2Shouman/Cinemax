@@ -86,7 +86,8 @@
 }
 
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.manage-halls-btn {
   background-color: #2d2d2d;
   color: white;
   padding: 8px 12px;
@@ -100,7 +101,8 @@
   cursor: pointer;
 }
 
-.edit-btn:hover {
+.edit-btn:hover,
+.manage-halls-btn:hover {
   background-color: #4a4a4a;
 }
 
@@ -139,4 +141,17 @@
 .theater-info h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+}
+
+.hall-card {
+  background-color: #1a1a1a;
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 300px;
+  margin: 0 auto;
 }

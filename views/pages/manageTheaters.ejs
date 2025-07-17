@@ -37,6 +37,7 @@
                                 <% } %>
                             </div>
                             <div class="theater-actions">
+                                <a href="/admin/theaters/<%= theater.id %>/halls" class="manage-halls-btn"><i class="fas fa-door-open"></i> Manage Halls</a>
                                 <a href="/admin/edit-theater/<%= theater.id %>" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
                                 <button onclick="deleteTheater('<%= theater.id %>')" class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
                             </div>

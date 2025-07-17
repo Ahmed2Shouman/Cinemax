@@ -7,6 +7,7 @@
   background-color: #0e1117;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  height: 100vh;
 }
 
 .page-title {
@@ -62,4 +63,24 @@
 
 .btn.btn-primary:hover {
   background-color: #c53030;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between checkboxes */
+  margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"],
+.checkbox-group input[type="radio"] {
+  width: auto; /* Allow input to take natural width */
+  margin-right: 5px; /* Space between input and label */
+}
+
+.checkbox-group label {
+  display: inline-flex; /* Align label with checkbox */
+  align-items: center; /* Vertically center content */
+  margin-bottom: 0; /* Remove default margin */
+  cursor: pointer;
 }
