@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Shows</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/tables.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Manage Shows</h1>
+        <div class="actions-container">
+            <a href="/admin/add-show" class="action-btn"><i class="fas fa-plus"></i> Add New Show</a>
+            <div class="filters">
+                <select id="movie-filter">
+                    <option value="">All Movies</option>
+                    <% [...new Set(shows.map(s => s.movie_title))].forEach(movie => { %>
+                        <option value="<%= movie %>"><%= movie %></option>
+                    <% }); %>
+                </select>
+                <select id="theater-filter">
+                    <option value="">All Theaters</option>
+                    <% [...new Set(shows.map(s => s.theater_name))].forEach(theater => { %>
+                        <option value="<%= theater %>"><%= theater %></option>
+                    <% }); %>
+                </select>
+                <input type="date" id="date-filter">
+                <select id="feature-filter">
+                    <option value="">All Features</option>
+                    <% [...new Set(shows.map(s => s.feature).filter(f => f))].forEach(feature => { %>
+                        <option value="<%= feature %>"><%= feature %></option>
+                    <% }); %>
+                </select>
+                <button id="reset-filters" class="action-btn">Reset Filters</button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Movie</th>
+                        <th>Theater</th>
+                        <th>Hall</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Feature</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (shows.length > 0) { %>
+                        <% shows.forEach(show => { %>
+                            <tr class="show-row"
+                                data-movie="<%= show.movie_title %>"
+                                data-theater="<%= show.theater_name %>"
+                                data-date="<%= show.show_date.toISOString().split('T')[0] %>"
+                                data-feature="<%= show.feature || '' %>">
+                                <td><%= show.id %></td>
+                                <td><%= show.movie_title %></td>
+                                <td><%= show.theater_name %></td>
+                                <td><%= show.hall_name %></td>
+                                <td><%= show.show_date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                                <td><%= show.start_time.substring(0, 5) %></td>
+                                <td><%= show.end_time.substring(0, 5) %></td>
+                                <td><%= show.feature || 'N/A' %></td>
+                                <td class="actions">
+                                    <a href="/admin/edit-show/<%= show.id %>" class="edit-btn">Edit</a>
+                                    <button class="delete-btn" data-id="<%= show.id %>">Delete</button>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="9">No shows found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/Scripts/manageShows.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', async (event) => {
+                    const showId = event.target.dataset.id;
+                    if (confirm(`Are you sure you want to delete show ID: ${showId}?`)) {
+                        try {
+                            const response = await fetch(`/admin/shows/${showId}`, {
+                                method: 'DELETE',
+                            });
+
+                            const result = await response.json();
+
+                            if (response.ok) {
+                                alert(result.message);
+                                event.target.closest('tr').remove(); // Remove the row from the table
+                            } else {
+                                alert(`Error: ${result.message}`);
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An unexpected error occurred.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

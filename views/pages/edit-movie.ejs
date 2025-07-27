@@ -6,14 +6,14 @@
     <title>Cinemax Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../../Style/main.css">
-    <link rel="stylesheet" href="/Style/Pages/admin/add.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/movie-form.css">
 </head>
 <body>
   <%- include('../partials/adminNav') %>
 
-  <main class="add-movie-container">
+  <main class="form-container">
     <h1 class="page-title">Edit Movie</h1>
-    <form action="/admin/edit-movie/<%= movie.id %>" method="POST" class="add-movie-form">
+    <form action="/admin/edit-movie/<%= movie.id %>" method="POST" class="form">
       <div class="form-group">
         <label for="title">Movie Title</label>
         <input type="text" id="title" name="title" value="<%= movie.title %>" required>

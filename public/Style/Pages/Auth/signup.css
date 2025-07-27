@@ -131,3 +131,21 @@
 .signup-container h2 {
     margin: 10px 0;
 }
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Make space for the icon */
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #aaa;
+}

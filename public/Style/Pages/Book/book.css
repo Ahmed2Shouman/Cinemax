@@ -34,20 +34,30 @@
     padding-right: 20px;
 }
 
-.date-select {
-    margin: 0;
-    padding: 0 2rem;
-    align-text: center;
-    justify-items: center;
+.selection-area {
+    background-color: #1a1d24;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
     width: 100%;
+    max-width: 800px;
 }
 
-.date-select .row {
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.selection-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    flex-direction: column;
+}
+
+.selection-box h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
 }
 
 .btn {
@@ -55,13 +65,12 @@
     border: none;
     color: white;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 12px 20px;
     font-size: 1rem;
+    cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
 }
 
 .btn:hover {
@@ -79,6 +88,7 @@
     align-items: center;
     width: 100%;
     padding: 0 1.5rem;
+    margin: 0 auto;
 }
 
 .seat-select .row {
@@ -91,9 +101,16 @@
 .seat-select h2{
     font-size: 2rem;
     margin: 1.5rem 0;
-    padding: 0.8rem 7rem;
+    padding: 0.8rem 2rem;
+    width: 50%;
+    text-align: center;
     background-color: #2b2f3a;
     border-radius: 1rem;
+    justify-self: center;
+}
+
+.seat-select h1{
+    justify-self: center;
 }
 
 .seat {
@@ -153,16 +170,22 @@
     transition: background-color 0.2s ease-in-out;
 }
 
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
 .booking-summary {
     background-color: #0f172a;
     color: #f1f5f9;
     padding: 20px;
-    margin: 2rem 2rem;
     border-radius: 10px;
     min-width: 23rem;
     max-width: 50rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    justify-self: center;
+    margin: 20px auto;
 }
 
 .booking-summary h2 {
@@ -187,6 +210,7 @@
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .disabled {
@@ -204,15 +228,18 @@
     color: white;
 }
 
-@media (max-width: 768px) {
+.selection-box select {
+    margin-bottom: 20px;
+}
 
+@media (max-width: 768px) {
     .top {
-        padding:30px;
+        padding: 30px;
         height: 80vh;
     }
 
     .details {
-        bottom: 200px;
+        bottom: 150px;
     }
 
     .top h1 {
@@ -220,7 +247,11 @@
     }
 
     .top p {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .selection-grid {
+        grid-template-columns: 1fr;
     }
 
     .seat-group button {
@@ -228,9 +259,4 @@
         padding: 0.5rem 0.75rem;
         font-size: 0.7rem;
     }
-
-    .date-select .row {
-        display: inline-block;
-    }
-    
 }

@@ -30,7 +30,7 @@
                             <p><strong>Location:</strong> <%= theater.location %></p>
                             <p><strong>Contact:</strong> <%= theater.contact_number %></p>
                             <div class="tags">
-                                <% if (theater.features && theater.features.length > 0) { %>
+                                <% if (Array.isArray(theater.features) && theater.features.length > 0) { %>
                                     <% theater.features.forEach(function(feature) { %>
                                         <span><%= feature %></span>
                                     <% }); %>

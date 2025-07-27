@@ -1,0 +1,134 @@
+.dashboard-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+form {
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.form-group input[type="file"] {
+    padding: 10px 0;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="time"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff5555;
+    box-shadow: 0 0 5px rgba(255, 85, 85, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff5555;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* For buttons used as links */
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #e64d4d;
+}
+
+.error-message {
+    color: #ff5555;
+    background-color: #331a1a;
+    border: 1px solid #ff5555;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Specific styles for add-show multiple times */
+.show-time-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.show-time-entry label {
+    flex-shrink: 0;
+}
+
+.show-time-entry input[type="time"] {
+    flex-grow: 1;
+}
+
+.remove-time-btn {
+    background-color: #dc3545; /* Red color for remove button */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-time-btn:hover {
+    background-color: #c82333;
+}
+
+#addMoreTimeBtn {
+    margin-top: 10px;
+    background-color: #ff5555; 
+}
+
+#addMoreTimeBtn:hover {
+    background-color: #e64d4d;
+}

@@ -72,7 +72,14 @@ export const editTheater = async (req, res) => {
   try {
     const { id } = req.params;
     const { name, location, contact_number, features, image } = req.body;
-    const featuresArray = Array.isArray(features) ? features : [features].filter(Boolean);
+    let featuresArray;
+    if (typeof features === 'string') {
+      featuresArray = features.replace(/[{}"']/g, '').split(',').map(f => f.trim()).filter(Boolean);
+    } else if (Array.isArray(features)) {
+      featuresArray = features;
+    } else {
+      featuresArray = [];
+    }
     await theaterModel.updateTheater(id, name, location, contact_number, featuresArray, image);
     res.redirect('/admin/theaters');
   } catch (err) {
@@ -84,7 +91,14 @@ export const editTheater = async (req, res) => {
 export const addTheater = async (req, res) => {
   try {
     const { name, location, contact_number, features, image } = req.body;
-    const featuresArray = Array.isArray(features) ? features : [features].filter(Boolean);
+    let featuresArray;
+    if (typeof features === 'string') {
+      featuresArray = features.replace(/[{}"']/g, '').split(',').map(f => f.trim()).filter(Boolean);
+    } else if (Array.isArray(features)) {
+      featuresArray = features;
+    } else {
+      featuresArray = [];
+    }
     await theaterModel.createTheater(name, location, contact_number, featuresArray, image);
     res.redirect('/admin/theaters');
   } catch (err) {
@@ -110,7 +124,7 @@ export const getAddHallPage = async (req, res) => {
 export const addHall = async (req, res) => {
   try {
     const { id } = req.params; // theater_id
-    const { name, features, seat_rows, seat_columns, chairs_in_section } = req.body;
+    const { name, features, seat_rows, seat_columns, chairs_in_section, price_per_seat } = req.body;
 
     if (parseInt(seat_rows) <= 0 || parseInt(seat_columns) <= 0) {
       return res.status(400).send('Seat rows and columns must be positive numbers.');
@@ -120,7 +134,7 @@ export const addHall = async (req, res) => {
       return res.status(400).send('Seats in column must be greater than chairs in section.');
     }
 
-    await hallModel.createHall(id, name, features, seat_rows, seat_columns, chairs_in_section);
+    await hallModel.createHall(id, name, features, seat_rows, seat_columns, chairs_in_section, price_per_seat);
     res.redirect(`/admin/theaters/${id}/halls`); // Redirect to a page showing halls for this theater
   } catch (err) {
     console.error('Error adding hall:', err);
@@ -161,7 +175,7 @@ export const getEditHallPage = async (req, res) => {
 export const editHall = async (req, res) => {
   try {
     const { id } = req.params; // hall_id
-    const { name, features, seat_rows, seat_columns, chairs_in_section } = req.body;
+    const { name, features, seat_rows, seat_columns, chairs_in_section, price_per_seat } = req.body;
 
     if (parseInt(seat_rows) <= 0 || parseInt(seat_columns) <= 0) {
       return res.status(400).send('Seat rows and columns must be positive numbers.');
@@ -171,7 +185,7 @@ export const editHall = async (req, res) => {
       return res.status(400).send('Seats in column must be greater than chairs in section.');
     }
 
-    await hallModel.updateHall(id, name, features, seat_rows, seat_columns, chairs_in_section);
+    await hallModel.updateHall(id, name, features, seat_rows, seat_columns, chairs_in_section, price_per_seat);
     const hall = await hallModel.getHallById(id); // Get hall to redirect to its theater's halls page
     res.redirect(`/admin/theaters/${hall.theater_id}/halls`);
   } catch (err) {

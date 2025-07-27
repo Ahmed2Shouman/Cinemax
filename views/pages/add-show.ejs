@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Show</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/forms.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Add New Show(s)</h1>
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+        <form id="addShowForm">
+            <div class="form-group">
+                <label for="theater_id">Theater:</label>
+                <select id="theater_id" name="theater_id" required>
+                    <option value="">Select a Theater</option>
+                    <% theaters.forEach(theater => { %>
+                        <option value="<%= theater.id %>"><%= theater.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hall_id">Hall:</label>
+                <select id="hall_id" name="hall_id" required>
+                    <option value="">Select a hall</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="movie_id">Movie:</label>
+                <select id="movie_id" name="movie_id" required>
+                    <option value="">Select a Movie</option>
+                    <% movies.forEach(movie => { %>
+                        <option value="<%= movie.id %>"><%= movie.title %> (<%= movie.duration %>)</option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="show_date">Show Date:</label>
+                <input type="date" id="show_date" name="show_date" required>
+            </div>
+
+            <div id="startTimesContainer">
+                <div class="form-group show-time-entry">
+                    <label for="start_time_0">Start Time:</label>
+                    <input type="time" id="start_time_0" name="start_times[]" required>
+                    <button type="button" class="remove-time-btn" style="display:none;">Remove</button>
+                </div>
+            </div>
+            <button type="button" id="addMoreTimeBtn" class="btn">Add Another Show Time</button>
+
+            <button type="submit" class="btn">Add Show(s)</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const theaterSelect = document.getElementById('theater_id');
+            const hallSelect = document.getElementById('hall_id');
+
+            theaterSelect.addEventListener('change', async () => {
+                const theaterId = theaterSelect.value;
+                hallSelect.innerHTML = '<option value="">Loading...</option>';
+
+                if (!theaterId) {
+                    hallSelect.innerHTML = '<option value="">Select a hall</option>';
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`/api/theaters/${theaterId}/halls`);
+                    const halls = await response.json();
+
+                    hallSelect.innerHTML = '<option value="">Select a hall</option>';
+                    halls.forEach(hall => {
+                        const option = document.createElement('option');
+                        option.value = hall.id;
+                        option.textContent = hall.name;
+                        hallSelect.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error('Error fetching halls:', error);
+                    hallSelect.innerHTML = '<option value="">Error loading halls</option>';
+                }
+            });
+
+            const addShowForm = document.getElementById('addShowForm');
+            const addMoreTimeBtn = document.getElementById('addMoreTimeBtn');
+            const startTimesContainer = document.getElementById('startTimesContainer');
+            let showTimeIndex = 0;
+
+            addMoreTimeBtn.addEventListener('click', () => {
+                showTimeIndex++;
+                const newEntry = document.createElement('div');
+                newEntry.classList.add('form-group', 'show-time-entry');
+                newEntry.innerHTML = `
+                    <label for="start_time_${showTimeIndex}">Start Time:</label>
+                    <input type="time" id="start_time_${showTimeIndex}" name="start_times[]" required>
+                    <button type="button" class="remove-time-btn">Remove</button>
+                `;
+                startTimesContainer.appendChild(newEntry);
+                updateRemoveButtonsVisibility();
+            });
+
+            startTimesContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('remove-time-btn')) {
+                    event.target.closest('.show-time-entry').remove();
+                    updateRemoveButtonsVisibility();
+                }
+            });
+
+            const updateRemoveButtonsVisibility = () => {
+                const removeButtons = document.querySelectorAll('.remove-time-btn');
+                if (removeButtons.length === 1) {
+                    removeButtons[0].style.display = 'none';
+                } else {
+                    removeButtons.forEach(btn => btn.style.display = 'inline-block');
+                }
+            };
+
+            updateRemoveButtonsVisibility(); // Initial call to hide/show button
+
+            addShowForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const hall_id = document.getElementById('hall_id').value;
+                const movie_id = document.getElementById('movie_id').value;
+                const show_date = document.getElementById('show_date').value;
+                const start_times = Array.from(document.querySelectorAll('input[name="start_times[]"]')).map(input => input.value);
+
+                try {
+                    const response = await fetch('/admin/add-show', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ hall_id, movie_id, show_date, start_times }),
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert(result.message);
+                        addShowForm.reset();
+                        // Clear all but the first start time input
+                        while (startTimesContainer.children.length > 1) {
+                            startTimesContainer.removeChild(startTimesContainer.lastChild);
+                        }
+                        document.getElementById('start_time_0').value = '';
+                        showTimeIndex = 0;
+                        updateRemoveButtonsVisibility();
+                    } else {
+                        alert(`Error: ${result.message}`);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An unexpected error occurred.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

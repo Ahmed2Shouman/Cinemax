@@ -14,14 +14,17 @@ export const getHomePage = async (req, res) => {
 export const getBookPage = async (req, res) => {
   const movieName = req.query.name;
   try {
-    const result = await pool.query('SELECT * FROM movies WHERE title ILIKE $1', [movieName]);
-    const movie = result.rows[0];
+    const movieResult = await pool.query('SELECT * FROM movies WHERE title ILIKE $1', [movieName]);
+    const movie = movieResult.rows[0];
 
     if (!movie) {
       return res.status(404).send('Movie not found');
     }
 
-    res.render('pages/book', { movie });
+    const theatersResult = await pool.query('SELECT * FROM theaters');
+    const theaters = theatersResult.rows;
+
+    res.render('pages/book', { movie, theaters });
   } catch (err) {
     console.error('Error loading movie for booking:', err);
     res.status(500).send('Failed to load movie data');
@@ -141,4 +144,4 @@ export const updateMovie = async (req, res) => {
     console.error('Failed to update movie:', err);
     res.status(500).send('Internal Server Error');
   }
-}
+};

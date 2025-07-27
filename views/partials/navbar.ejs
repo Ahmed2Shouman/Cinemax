@@ -7,8 +7,16 @@
             <li><a href="/offers" class="hide-on-mobile">Offers</a></li>
         </ul>
         <ul class="nav-links right">
-            <li><a href="/sign-in" class="nav-btn hide-on-mobile">Sign In</a></li>
-            <li><a href="/sign-up" class="nav-btn hide-on-mobile">Sign Up</a></li>
+            <% if (user) { %>
+                <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
+                    <li><a href="/admin" class="nav-btn hide-on-mobile">Dashboard</a></li>
+                <% } %>
+                <li><a href="/profile" class="nav-btn hide-on-mobile">Profile</a></li>
+                <li><a href="/auth/logout" class="nav-btn hide-on-mobile">Logout</a></li>
+            <% } else { %>
+                <li><a href="/sign-in" class="nav-btn hide-on-mobile">Sign In</a></li>
+                <li><a href="/sign-up" class="nav-btn hide-on-mobile">Sign Up</a></li>
+            <% } %>
             <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
     </div>
@@ -18,8 +26,16 @@
             <li><a href="/movies">Movies</a></li>
             <li><a href="/theaters">Theaters</a></li>
             <li><a href="/offers">Offers</a></li>
-            <li><a href="/sign-in">Sign In</a></li>
-            <li><a href="/sign-up.">Sign Up</a></li>
+            <% if (user) { %>
+                <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
+                    <li><a href="/admin">Dashboard</a></li>
+                <% } %>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/sign-in">Sign In</a></li>
+                <li><a href="/sign-up">Sign Up</a></li>
+            <% } %>
         </ul>
     </div>
 </nav>
