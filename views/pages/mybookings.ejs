@@ -3,13 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinemax</title>
+    <title>My Bookings - Cinemax</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/Style/main.css">
     <link rel="stylesheet" href="/Style/Pages/My Bookings/mybookings.css">
 </head>
 <body>
     <%- include('../partials/navbar') %>
+
+    <main class="my-bookings-page">
+        <div class="container">
+            <h1>My Bookings</h1>
+            <% if (bookings.length > 0) { %>
+                <div class="bookings-list">
+                    <% bookings.forEach(booking => { %>
+                        <div class="booking-card">
+                            <div class="booking-header">
+                                <h2><%= booking.movie_title %></h2>
+                                <span class="booking-id">Booking ID: <%= booking.id %></span>
+                            </div>
+                            <div class="booking-details">
+                                <p><strong>Theater:</strong> <%= booking.theater_name %></p>
+                                <p><strong>Hall:</strong> <%= booking.hall_name %></p>
+                                <p><strong>Date:</strong> <%= booking.formatted_show_date %></p>
+                                <p><strong>Time:</strong> <%= booking.formatted_show_time %></p>
+                                <p><strong>Feature:</strong> <%= booking.feature %></p>
+                                <p><strong>Seats:</strong> <%= booking.seats.join(', ') %></p>
+                                <p class="total-price"><strong>Total Price:</strong> $<%= booking.total_price.toFixed(2) %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <p class="no-bookings">You have no bookings yet.</p>
+            <% } %>
+        </div>
+    </main>
+
     <%- include('../partials/footer') %>
     <script src="/Scripts/main.js"></script>
 </body>

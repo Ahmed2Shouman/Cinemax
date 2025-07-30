@@ -4,7 +4,6 @@
             <a href="/" class="logo">Cinemax</a>
             <li><a href="/movies" class="hide-on-mobile">Movies</a></li>
             <li><a href="/theaters" class="hide-on-mobile">Theaters</a></li>
-            <li><a href="/offers" class="hide-on-mobile">Offers</a></li>
         </ul>
         <ul class="nav-links right">
             <% if (user) { %>
@@ -25,7 +24,6 @@
             <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
             <li><a href="/movies">Movies</a></li>
             <li><a href="/theaters">Theaters</a></li>
-            <li><a href="/offers">Offers</a></li>
             <% if (user) { %>
                 <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
                     <li><a href="/admin">Dashboard</a></li>

@@ -11,6 +11,27 @@
 <body>
   <%- include('../partials/navbar') %>
 
+  <main>
+    <section class="profile-section">
+      <div class="profile-container">
+        <h1>User Profile</h1>
+        <div class="profile-details">
+          <p><strong>First Name:</strong> <%= user.first_name %></p>
+          <p><strong>Last Name:</strong> <%= user.last_name %></p>
+          <p><strong>Username:</strong> <%= user.username %></p>
+          <p><strong>Email:</strong> <%= user.email %></p>
+          <% if (user.role === 'owner' || user.role === 'admin' || user.role === 'supervisor') { %>
+            <p><strong>Role:</strong> <%= user.role %></p>
+          <% } %>
+        </div>
+        <div class="profile-actions">
+          <a href="/mybookings" class="btn">My Bookings</a>
+          <!-- Add more actions here if needed -->
+        </div>
+      </div>
+    </section>
+  </main>
+
   <%- include('../partials/footer') %>
   <script src="/Scripts/main.js"></script>
 

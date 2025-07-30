@@ -59,7 +59,7 @@ nav {
 
 .nav-links .left {
     display: flex;
-    padding-left: 5rem;
+    padding-left: 20px; /* Reduced padding on the left */
     justify-content: flex-start;
 }
 
@@ -122,10 +122,12 @@ footer {
 
 .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
-    margin: 50px 100px;
-    padding-right: 250px;
+    width: 100%; /* Set width to 100% */
+    margin: 50px auto;
+    padding: 0 50px; /* Increased padding for full width */
+    gap: 30px; /* Gap between columns */
 }
 
 .movie-card {
@@ -170,41 +172,88 @@ footer {
 
 footer h1 {
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: bold;
 }
 
-footer p, footer a {
-    color: white;
+footer p {
+    color: #cccccc;
     font-size: 0.9rem;
     line-height: 1.6;
-    text-decoration: none;
-    max-width: 350px;
+    margin-bottom: 15px;
 }
 
 footer a {
+    color: #cccccc;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    text-decoration: none;
     display: block;
 }
 
 footer a:hover {
+    color: #ffffff;
     text-decoration: underline;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Minimum width for columns before wrapping */
+    text-align: left; /* Default to left alignment */
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #e53e3e; /* Highlight color on hover */
+}
+
+.app-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.app-btn i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.app-btn:hover {
+    background-color: #3a3a3a;
 }
 
 footer hr {
     border: none;
-    border-top: 1px solid white;
-    margin: 30px 0;
+    border-top: 1px solid #333;
+    margin: 40px 50px; /* Adjusted margin for full width */
+    width: calc(100% - 100px); /* Adjusted width for full width */
 }
 
-footer > p {
+footer > .cr {
     width: 100%;
     text-align: center;
     font-size: 0.8rem;
-    color: #ccc;
-}
-
-.cr {
-    justify-self: center;
-    margin-bottom: 50px;
+    color: #aaaaaa;
+    margin-bottom: 30px;
 }
 
 .theater-card {
@@ -272,6 +321,26 @@ footer > p {
     display: none;
 }
 
+@media (max-width: 1024px) {
+    .container {
+        justify-content: space-around;
+        padding: 0 30px; /* Keep padding for smaller screens */
+    }
+
+    .footer-column {
+        flex-basis: calc(50% - 15px); /* Two columns for tablet */
+        max-width: calc(50% - 15px);
+    }
+
+    .footer-column:nth-child(odd) {
+        margin-right: 30px; /* Add some spacing between columns */
+    }
+
+    .footer-column:nth-child(even) {
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 768px) {
     .hide-on-mobile {
         display: none;
@@ -282,7 +351,6 @@ footer > p {
     }
 
     .logo {
-        color: #e53e3e;
         font-size: x-large;
     }
 
@@ -293,28 +361,25 @@ footer > p {
     .container {
         flex-direction: column;
         gap: 30px;
+        width: 100%; /* Ensure 100% width on small screens */
+        margin: 50px auto;
+        padding: 0 20px; /* Adjusted padding for small screens */
+    }
+
+    .footer-column {
+        width: 100%; /* Each column takes full width on small screens */
         max-width: 100%;
-        margin: 50px 30px;
-        padding-right: 0;
-    }
-
-    footer p, footer a{
-        width: 100%;
-        font-size: 0.8rem;
-        color: #ccc;
-    }
-
-    footer .container {
-        align-items: flex-start;
         text-align: left;
+        margin-right: 0;
+        margin-left: 0;
     }
 
-    footer p, footer a, footer h1 {
-        text-align: left;
+    .social-icons {
+        justify-content: flex-start;
     }
 
-    .cr {
-        text-align: center;
+    .app-btn {
+        justify-content: flex-start;
     }
 
     .theater-card {

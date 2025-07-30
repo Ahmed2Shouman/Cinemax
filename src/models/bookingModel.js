@@ -136,3 +136,31 @@ export const deleteBookingById = async (id) => {
         client.release();
     }
 };
+
+export const getBookingsByUserId = async (userId) => {
+    const query = `
+        SELECT
+            b.id,
+            t.name AS theater_name,
+            m.title AS movie_title,
+            s.show_date,
+            s.start_time AS show_start_time,
+            u.username,
+            ARRAY_AGG(bs.seat_number) AS seats,
+            h.name AS hall_name,
+            s.feature,
+            (h.price_per_seat * array_length(ARRAY_AGG(bs.seat_number), 1)) AS total_price
+        FROM bookings b
+        JOIN users u ON b.user_id = u.id
+        JOIN shows s ON b.show_id = s.id
+        JOIN movies m ON s.movie_id = m.id
+        JOIN halls h ON s.hall_id = h.id
+        JOIN theaters t ON h.theater_id = t.id
+        JOIN booked_seats bs ON b.id = bs.booking_id
+        WHERE b.user_id = $1
+        GROUP BY b.id, t.name, m.title, s.show_date, s.start_time, u.username, h.name, s.feature, h.price_per_seat
+        ORDER BY b.id DESC;
+    `;
+    const { rows } = await pool.query(query, [userId]);
+    return rows;
+};

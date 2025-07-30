@@ -1,8 +1,5 @@
-export const getOffersPage = (req, res) => {
-  res.render('pages/offers');
-};
-
 import * as theaterModel from '../models/theaterModel.js';
+import * as userModel from '../models/userModel.js';
 import pool from '../config/db.js';
 
 export const getBookPage = async (req, res) => {
@@ -42,8 +39,17 @@ export const getPrivacyPolicyPage = (req, res) => {
   res.render('pages/privacy');
 };
 
-export const getProfilePage = (req, res) => {
-  res.render('pages/profile');
+export const getProfilePage = async (req, res) => {
+  try {
+    const user = await userModel.findUserById(req.session.user.id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+    res.render('pages/profile', { user });
+  } catch (error) {
+    console.error('Error loading profile page:', error);
+    res.status(500).send('Failed to load profile page');
+  }
 };
 
 export const getSignInPage = (req, res) => {

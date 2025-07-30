@@ -70,3 +70,31 @@ export const createBooking = async (req, res) => {
         res.status(500).json({ message: 'Error creating booking' });
     }
 };
+
+export const getMyBookingsPage = async (req, res) => {
+    try {
+        if (!req.session.user || !req.session.user.id) {
+            return res.redirect('/sign-in');
+        }
+        const userId = req.session.user.id;
+        const bookings = await bookingModel.getBookingsByUserId(userId);
+        bookings.forEach(booking => {
+            booking.total_price = parseFloat(booking.total_price);
+            const showDate = new Date(booking.show_date);
+            const year = showDate.getFullYear();
+            const month = (showDate.getMonth() + 1).toString().padStart(2, '0');
+            const day = showDate.getDate().toString().padStart(2, '0');
+            booking.formatted_show_date = `${year}-${month}-${day}`;
+
+            const time = booking.show_start_time;
+            const date = new Date(`1970-01-01T${time}`);
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            booking.formatted_show_time = `${hours}:${minutes}`;
+        });
+        res.render('pages/mybookings', { bookings, user: req.session.user });
+    } catch (error) {
+        console.error('Error loading my bookings page:', error);
+        res.status(500).send('Failed to load my bookings page');
+    }
+};

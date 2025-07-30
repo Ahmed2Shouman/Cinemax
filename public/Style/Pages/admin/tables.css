@@ -86,11 +86,11 @@ table tbody tr:hover {
 }
 
 .edit-btn {
-    background-color: #007bff; /* Blue for edit */
+    background-color: #dc3545; /* Blue for edit */
 }
 
 .edit-btn:hover {
-    background-color: #0056b3;
+    background-color: #c82333;
 }
 
 .delete-btn {
