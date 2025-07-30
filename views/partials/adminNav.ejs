@@ -10,6 +10,7 @@
             <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
             <li><a href="/admin/users" class="hide-on-mobile">Users</a></li>
             <% } %>
+            <li><a href="/admin/bookings" class="hide-on-mobile">Bookings</a></li>
             <li><a href="/admin/offers" class="hide-on-mobile">Offers</a></li>
         </ul>
         <ul class="nav-links right">
@@ -28,6 +29,7 @@
             <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
             <li><a href="/admin/users">Users</a></li>
             <% } %>
+            <li><a href="/admin/bookings">Bookings</a></li>
             <li><a href="/admin/Offers">Offers</a></li>
             <li><a href="/auth/logout">Logout</a></li>
         </ul>

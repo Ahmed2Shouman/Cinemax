@@ -159,3 +159,44 @@ table tbody tr:hover {
     height: 54px; /* Match the button height */
     box-sizing: border-box;
 }
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter-bar form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-bar select,
+.filter-bar input {
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    height: 54px; /* Match the button height */
+    box-sizing: border-box;
+}
+
+.filter-bar button {
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff5555;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 54px; /* Match the button height */
+    box-sizing: border-box;
+}
+
+.filter-bar button:hover {
+    background-color: #ff4444;
+}
