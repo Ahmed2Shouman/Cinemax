@@ -4,10 +4,17 @@ import * as hallModel from '../models/hallModel.js';
 
 export const getAdminDashboard = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM movies');
-    res.render('pages/dashboard', { movies: result.rows });
+    const moviesResult = await pool.query('SELECT * FROM movies');
+    const bookingsResult = await pool.query('SELECT COUNT(*) FROM bookings');
+    const usersResult = await pool.query("SELECT COUNT(*) FROM users WHERE role = 'regular'");
+
+    res.render('pages/dashboard', {
+      movies: moviesResult.rows,
+      totalBookings: bookingsResult.rows[0].count,
+      totalUsers: usersResult.rows[0].count
+    });
   } catch (err) {
-    console.error('Error loading movies for dashboard:', err);
+    console.error('Error loading data for dashboard:', err);
     res.status(500).send('Failed to load dashboard');
   }
 };
