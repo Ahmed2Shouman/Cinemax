@@ -1,8 +1,9 @@
 const isLoggedIn = (req, res, next) => {
+    console.log('isLoggedIn middleware hit. req.session.user:', req.session.user);
     if (req.session.user) {
         return next();
     }
-    res.redirect('/login');
+    res.redirect('/sign-in');
 };
 
 const isAdmin = (req, res, next) => {
