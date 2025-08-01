@@ -5,6 +5,13 @@ const isLoggedIn = (req, res, next) => {
     res.redirect('/sign-in');
 };
 
+const isLoggedOut = (req, res, next) => {
+    if (req.session.user) {
+        return res.redirect('/dashboard');
+    }
+    next();
+};
+
 const isAdmin = (req, res, next) => {
     if (req.session.user && (req.session.user.role === 'admin' || req.session.user.role === 'owner' || req.session.user.role === 'supervisor')) {
         return next();
@@ -23,6 +30,7 @@ const restrictTo = (...roles) => {
 
 export {
     isLoggedIn,
+    isLoggedOut,
     isAdmin,
     restrictTo,
 };

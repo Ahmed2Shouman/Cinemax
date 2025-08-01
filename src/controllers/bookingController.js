@@ -17,7 +17,13 @@ export const getManageBookingsPage = async (req, res) => {
         const allBookings = await bookingModel.getAllBookings();
         const theaters = await theaterModel.getAllTheaters();
         const movies = await movieModel.default.findAll();
-        const dates = [...new Set(allBookings.map(b => new Date(b.show_date).toISOString().split('T')[0]))];
+        const dates = [...new Set(allBookings.map(b => {
+            const date = new Date(b.show_date);
+            const year = date.getUTCFullYear();
+            const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+            const day = date.getUTCDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }))];
         const times = [...new Set(allBookings.map(b => b.show_start_time))];
         const features = [...new Set(allBookings.map(b => b.feature))];
         const halls = [...new Set(allBookings.map(b => b.hall_name))];
@@ -27,9 +33,9 @@ export const getManageBookingsPage = async (req, res) => {
             booking.total_price = parseFloat(booking.total_price);
             // Format the date and time for display
             const showDate = new Date(booking.show_date);
-            const year = showDate.getFullYear();
-            const month = (showDate.getMonth() + 1).toString().padStart(2, '0');
-            const day = showDate.getDate().toString().padStart(2, '0');
+            const year = showDate.getUTCFullYear();
+            const month = (showDate.getUTCMonth() + 1).toString().padStart(2, '0');
+            const day = showDate.getUTCDate().toString().padStart(2, '0');
             booking.formatted_show_date = `${year}-${month}-${day}`;
 
             const time = booking.show_start_time;
@@ -81,9 +87,9 @@ export const getMyBookingsPage = async (req, res) => {
         bookings.forEach(booking => {
             booking.total_price = parseFloat(booking.total_price);
             const showDate = new Date(booking.show_date);
-            const year = showDate.getFullYear();
-            const month = (showDate.getMonth() + 1).toString().padStart(2, '0');
-            const day = showDate.getDate().toString().padStart(2, '0');
+            const year = showDate.getUTCFullYear();
+            const month = (showDate.getUTCMonth() + 1).toString().padStart(2, '0');
+            const day = showDate.getUTCDate().toString().padStart(2, '0');
             booking.formatted_show_date = `${year}-${month}-${day}`;
 
             const time = booking.show_start_time;

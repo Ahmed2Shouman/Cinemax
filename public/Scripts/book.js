@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners can be set up here if needed
 });
 
+function getLocalDateString(isoString) {
+    if (!isoString) return null;
+    const localDate = new Date(isoString);
+    const year = localDate.getFullYear();
+    const month = localDate.getMonth() + 1;
+    const day = localDate.getDate();
+    return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}
+
 let selectedTheater = null;
 let selectedFeature = null;
 let selectedDate = null;
@@ -73,7 +82,7 @@ function dateSelected() {
         return;
     }
 
-    populateTimeOptions(allShows.filter(show => show.feature === selectedFeature && show.show_date.split('T')[0] === selectedDate));
+    populateTimeOptions(allShows.filter(show => show.feature === selectedFeature && getLocalDateString(show.show_date) === selectedDate));
     updateSummary();
 }
 
@@ -91,7 +100,7 @@ function populateFeatureOptions(shows) {
 }
 
 function populateDateOptions(shows) {
-    const dates = [...new Set(shows.map(show => show.show_date.split('T')[0]))];
+    const dates = [...new Set(shows.map(show => getLocalDateString(show.show_date)))];
     const dateOptions = document.getElementById('date-options');
     dateOptions.innerHTML = '<option value="" disabled selected>Choose a date</option>';
 
@@ -99,13 +108,18 @@ function populateDateOptions(shows) {
     today.setHours(0, 0, 0, 0);
 
     dates.forEach(dateString => {
-        const showDate = new Date(dateString);
-        showDate.setHours(0, 0, 0, 0);
+        const [year, month, day] = dateString.split('-').map(Number);
+        // Create a Date object representing noon UTC on the specified date to avoid timezone issues
+        const showDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+        console.log(`populateDateOptions: dateString: ${dateString}, showDate (UTC noon): ${showDate.toISOString()}, showDate (local): ${showDate.toString()}`);
+
         if (showDate >= today) {
             const option = document.createElement('option');
             option.value = dateString;
-            const displayDate = new Date(dateString);
-            option.textContent = displayDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
+            // Format for display in local timezone
+            const formattedDisplayDate = showDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            option.textContent = formattedDisplayDate;
+            console.log(`populateDateOptions: formattedDisplayDate: ${formattedDisplayDate}`);
             dateOptions.appendChild(option);
         }
     });
@@ -123,13 +137,13 @@ function populateTimeOptions(shows) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const selectedShowDate = new Date(selectedDate);
-    selectedShowDate.setHours(0, 0, 0, 0);
+    const parts = selectedDate.split('-').map(Number);
+    const selectedShowDate = new Date(parts[0], parts[1] - 1, parts[2]);
 
     const isToday = selectedShowDate.getTime() === today.getTime();
 
     const times = allShows.filter(show => {
-        const showDateMatch = show.show_date.split('T')[0] === selectedDate;
+        const showDateMatch = getLocalDateString(show.show_date) === selectedDate;
         const featureMatch = show.feature === selectedFeature; // Add this line
         if (!showDateMatch || !featureMatch) return false; // Modify this line
 
@@ -278,8 +292,13 @@ function updateSummary() {
     
     let formattedDate = 'No date selected';
     if (selectedDate) {
-        const displayDate = new Date(selectedDate);
-        formattedDate = displayDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
+        const [year, month, day] = selectedDate.split('-').map(Number);
+        // Create a Date object representing noon UTC on the selected date to avoid timezone issues
+        const displayDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+        console.log(`updateSummary: selectedDate: ${selectedDate}, displayDate (UTC noon): ${displayDate.toISOString()}, displayDate (local): ${displayDate.toString()}`);
+        // Format for display in the user's local timezone
+        formattedDate = displayDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        console.log(`updateSummary: formattedDate: ${formattedDate}`);
     }
     
     const formattedTime = selectedTime ? selectedTime.substring(0, 5) : 'No time selected';

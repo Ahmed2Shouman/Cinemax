@@ -13,6 +13,7 @@ import bookingRoutes from './src/routes/bookingRoutes.js';
 import session from 'express-session';
 import pgSession from 'connect-pg-simple';
 import pool from './src/config/db.js';
+import 'dotenv/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +34,7 @@ app.use(session({
         pool: pool,
         tableName: 'session'
     }),
-    secret: 'your_secret_key', // Replace with a strong secret key in a real application
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
@@ -52,7 +53,7 @@ app.use('/api', theaterRoutes);
 app.use('/', showRoutes);
 app.use('/api/bookings', bookingRoutes);
 
-// 👇 START THE SERVER
+
 app.listen(port, () => {
   console.log(`✅ Server is running on http://localhost:${port}`);
 });
