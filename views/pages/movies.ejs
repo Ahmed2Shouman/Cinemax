@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Movies/movies.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="cards-container">
+        <!-- Filters Column -->
+        <aside class="filters">
+            <div class="filters-header">
+                <h2>Filters</h2>
+                <button class="toggle-filters-btn show-on-mobile" onclick="toggleFilters()">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="filters-content">
+                <input type="text" placeholder="Search movies..." class="search-box" onkeyup="searchMovies()"/>
+
+                <h4>Genre</h4>
+                <ul class="filter-list">
+                    <li class="active" onclick="filterSelected(this)">All Genres</li>
+                    <li onclick="filterSelected(this)">Action</li>
+                    <li onclick="filterSelected(this)">Adventure</li>
+                    <li onclick="filterSelected(this)">Comedy</li>
+                    <li onclick="filterSelected(this)">Drama</li>
+                    <li onclick="filterSelected(this)">Horror</li>
+                    <li onclick="filterSelected(this)">Sci-Fi</li>
+                    <li onclick="filterSelected(this)">Thriller</li>
+                </ul>
+
+                <h4>Sort By</h4>
+                <select class="sort-select" onchange="sortMovies(this.value)">
+                    <option value="ALL">All Movies</option>
+                    <option value="NOW SHOWING">Now Showing</option>
+                    <option value="UPCOMING">Upcoming</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- Movies Column -->
+        <main class="main-coulumn">
+            <div class="header">
+                <h2 id="movies-header">All Movies</h2>
+            </div>
+
+            <div class="cards-grid">
+                <% movies.forEach(movie => { %>
+                  <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
+                    <img src="<%= movie.poster_url %>" alt="<%= movie.title %> poster">
+                    <h2><%= movie.title %></h2>
+                    <div class="row">
+                      <h6><i class="fas fa-star"></i> <%= movie.rating %></h6>
+                      <h6><i class="fas fa-clock"></i> <%= movie.duration %></h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> <%= movie.genre %></h6>
+                  </a>
+                <% }) %>
+                <!-- Add more movie cards as needed -->
+            </div>
+        </main>
+    </div>
+<script>
+    function toggleFilters() {
+        const content = document.querySelector('.filters-content');
+        content.classList.toggle('active');
+    }
+
+    function filterSelected(selectedElement) {
+        const allFilters = document.querySelectorAll('.filter-list li');
+        allFilters.forEach(li => li.classList.remove('active'));
+        selectedElement.classList.add('active');
+
+        const genre = selectedElement.textContent.trim();
+        // When genre filter is applied, reset sort to "All Movies"
+        document.querySelector('.sort-select').value = 'ALL';
+        fetchMovies(genre, 'ALL');
+    }
+
+    function sortMovies(status) {
+        const genre = document.querySelector('.filter-list li.active').textContent.trim();
+        fetchMovies(genre, status);
+    }
+
+    function fetchMovies(genre, status) {
+        let url = '/api/movies';
+        const params = new URLSearchParams();
+
+        if (genre !== 'All Genres') {
+            params.append('genre', genre);
+        }
+        if (status !== 'ALL') {
+            params.append('status', status);
+        }
+
+        if (params.toString()) {
+            url += `?${params.toString()}`;
+        }
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                const cardsGrid = document.querySelector('.cards-grid');
+                cardsGrid.innerHTML = '';
+
+                const moviesHeader = document.getElementById('movies-header');
+                if (status === 'NOW SHOWING') {
+                    moviesHeader.textContent = 'Now Showing Movies';
+                } else if (status === 'UPCOMING') {
+                    moviesHeader.textContent = 'Upcoming Movies';
+                } else {
+                    moviesHeader.textContent = 'All Movies';
+                }
+
+
+                data.forEach(movie => {
+                    const movieCard = document.createElement('a');
+                    movieCard.href = `/book?name=${encodeURIComponent(movie.title)}`;
+                    movieCard.className = 'movie-card';
+
+                    movieCard.innerHTML = `
+                        <img src="${movie.poster_url}" alt="${movie.title} poster">
+                        <h2>${movie.title}</h2>
+                        <div class="row">
+                            <h6><i class="fas fa-star"></i> ${movie.rating}</h6>
+                            <h6><i class="fas fa-clock"></i> ${movie.duration}</h6>
+                        </div>
+                        <h6><i class="fas fa-film"></i> ${movie.genre}</h6>
+                    `;
+
+                    cardsGrid.appendChild(movieCard);
+                });
+            })
+            .catch(err => console.error('Error fetching movies:', err));
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchMovies('All Genres', 'ALL');
+    });
+
+    function searchMovies() {
+        const searchInput = document.querySelector('.search-box').value.toLowerCase();
+        const movieCards = document.querySelectorAll('.movie-card');
+
+        movieCards.forEach(card => {
+            const title = card.querySelector('h2').textContent.toLowerCase();
+            if (title.includes(searchInput)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+<script src="/Scripts/main.js"></script>
+<%- include('../partials/footer') %>
+</body>
+</html>

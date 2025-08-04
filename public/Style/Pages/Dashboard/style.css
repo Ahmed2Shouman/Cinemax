@@ -1,0 +1,90 @@
+
+
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background-color: #1f1f1f;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.stat-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff5555;
+}
+
+.dashboard-actions {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.dashboard-actions h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #333;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #444;
+}
+
+.action-btn i {
+  font-size: 1.2rem;
+}

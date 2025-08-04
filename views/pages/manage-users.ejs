@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/tables.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Manage Users</h1>
+        <div class="actions-container">
+            <form action="/admin/users" method="GET" class="filter-bar">
+                <select name="role" id="role" onchange="this.form.submit()">
+                    <option value="">All Roles</option>
+                    <% if (user.role === 'owner') { %>
+                        <option value="owner" <%= currentRole === 'owner' ? 'selected' : '' %>>Owner</option>
+                        <option value="supervisor" <%= currentRole === 'supervisor' ? 'selected' : '' %>>Supervisor</option>
+                        <option value="admin" <%= currentRole === 'admin' ? 'selected' : '' %>>Admin</option>
+                        <option value="regular" <%= currentRole === 'regular' ? 'selected' : '' %>>Regular</option>
+                    <% } else if (user.role === 'supervisor') { %>
+                        <option value="admin" <%= currentRole === 'admin' ? 'selected' : '' %>>Admin</option>
+                        <option value="regular" <%= currentRole === 'regular' ? 'selected' : '' %>>Regular</option>
+                    <% } else if (user.role === 'admin') { %>
+                        <option value="regular" <%= currentRole === 'regular' ? 'selected' : '' %>>Regular</option>
+                    <% } %>
+                </select>
+                <input type="text" name="search" id="search" placeholder="Search by username" value="<%= currentSearch || '' %>">
+                <button type="submit" class="action-btn">Search</button>
+            </form>
+            <% if (user.role === 'owner' || user.role === 'supervisor') { %>
+                <a href="/admin/users/add" class="action-btn">Add User</a>
+            <% } %>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(u => { %>
+                        <tr>
+                            <td><%= u.username %></td>
+                            <td><%= u.email %></td>
+                            <td><%= u.role %></td>
+                            <td>
+                                <a href="/admin/users/edit/<%= u.id %>" class="edit-btn">Edit</a>
+                                <form action="/admin/users/delete/<%= u.id %>?_method=DELETE" method="POST" style="display:inline;">
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <%- include('../partials/cr') %>
+</body>
+</html>

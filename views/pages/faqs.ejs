@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Help/faqs.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <main class="faq-container">
+        <div class="faq-card">
+            <h1 class="faq-title">Frequently Asked Questions</h1>
+            <p class="faq-subtitle">Browse through common inquiries about booking, cancellations, and more.</p>
+
+            <details class="faq-item">
+                <summary class="faq-question">How do I book a movie ticket?</summary>
+                <p class="faq-answer">You can book tickets by selecting your movie from the homepage or movies section, choosing a showtime, and completing payment through our secure system.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">Can I cancel or refund my booking?</summary>
+                <p class="faq-answer">Tickets can be canceled up to 2 hours before the showtime through your account under 'My Bookings'. Refunds are processed within 5–7 business days.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-question">Do you offer group discounts?</summary>
+                <p class="faq-answer">Yes, we offer group discounts for bookings of 10 or more tickets. Please contact our customer support for more information.</p>
+            </details>
+        </div>
+    </main>
+<script src="/Scripts/main.js"></script>
+<%- include('../partials/footer') %>
+</body>
+</html>

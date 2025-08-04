@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Auth/login.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="login-container">
+        <h1 class="logo">CINEMAX</h1>
+        <h2 style="font-weight: bold;">Welcome back</h2>
+        <p>Sign in to continue your movie journey</p>
+
+        <div class="login-form">
+            <form action="">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <div class="label-row">
+                        <label for="password">Password</label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" required>
+                        <i class="fas fa-eye-slash" id="togglePassword"></i>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <div class="divider">
+                    <hr><span>Or continue with</span><hr>
+                </div>
+                <div class="social-login">
+                    <button class="btn btn-outline"><i class="fab fa-google"></i> Google</button>
+                    <button class="btn btn-outline"><i class="fab fa-facebook"></i> Facebook</button>
+                </div>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="/sign-up">Sign up</a></p>
+        </div>
+    </div>
+    <script src="/Scripts/main.js"></script>
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const response = await fetch('/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                if (data.redirectTo) {
+                    window.location.href = data.redirectTo;
+                } else {
+                    window.location.href = '/';
+                }
+            } else {
+                alert(data.message);
+            }
+        });
+    </script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

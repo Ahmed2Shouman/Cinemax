@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/Pages/Home/style.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+    
+    <% if (typeof movies !== 'undefined' && movies.length > 0) { %>
+    <!-- Slider -->
+    <div id="top-slider" style="background-image: linear-gradient(to bottom, transparent, black), url('<%= movies[0].banner_url %>');">
+        <div class="details" id="movie-details">
+            <h2 class="highlighted">Now Playing</h2>
+            <h1><%= movies[0].title %></h1>
+            <div class="MD">
+                <h6><i class="fas fa-film"></i> <%=movies[0].genre%></h6>
+                <h6><i class="fas fa-clock"></i> <%=movies[0].duration%></h6>
+                <h6><i class="fas fa-star"></i> <%=movies[0].rating%></h6>
+            </div>
+            <p><%=movies[0].description%></p>
+            <a href="/book?name=<%= encodeURIComponent(movies[0].title) %>" class="Button">Book Tickets</a>
+            <a href="<%= movies[0].trailer %>" class="Button" target="_blank">Watch Trailer</a>
+        </div>
+    </div>
+
+    <!-- Now Showing-->
+    <div class="movie-select">
+        <h1>Now Showing</h1>
+        <div class="movie-slider-wrapper" style="position: relative; width: 100%;"> <!-- Slider -->
+            <div id="movieSlider">
+
+                <!-- adds Movie Cards -->
+                <% movies.forEach(movie => { %>
+                  <a href="/book?name=<%= encodeURIComponent(movie.title) %>" class="movie-card">
+                    <img src="<%= movie.poster_url %>" alt="<%= movie.title %> poster">
+                    <h2><%= movie.title %></h2>
+                    <div class="row">
+                      <h6><i class="fas fa-star"></i> <%= movie.rating %></h6>
+                      <h6><i class="fas fa-clock"></i> <%= movie.duration %></h6>
+                    </div>
+                    <h6><i class="fas fa-film"></i> <%= movie.genre %></h6>
+                  </a>
+                <% }) %>
+                
+            </div>
+        </div>
+
+        <!-- Slider Btns -->
+        <div class="slider-controls">
+            <button class="scroll-btn left" onclick="scrollSlider(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="scroll-btn right" onclick="scrollSlider(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+    <% } else { %>
+        <div style="text-align: center; padding: 50px; color: white;">
+            <h1>No movies currently showing</h1>
+            <p>Please check back later.</p>
+        </div>
+    <% } %>
+    <script src="/Scripts/index.js"></script>
+    <script src="/Scripts/main.js"></script>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+</body>
+</html>

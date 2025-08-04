@@ -1,0 +1,153 @@
+.my-bookings-page {
+    padding: 40px 20px; /* Consistent with admin container padding */
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #121212; /* Consistent background */
+    color: #ffffff; /* Consistent text color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+}
+
+.my-bookings-page .container {
+    width: 100%;
+    max-width: 1200px; /* Wider container like admin tables */
+    padding: 30px; /* Adjusted padding */
+    background-color: #1a1a1a; /* Darker background for container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.my-bookings-page h1 {
+    color: #ffffff; /* White title color */
+    margin-bottom: 40px; /* Consistent with admin title margin */
+    font-size: 2.5rem; /* Using rem for consistency */
+    font-weight: bold; /* Consistent with admin title */
+    text-align: center; /* Ensure the title is centered */
+}
+
+.bookings-list {
+    background-color: #1f1f1f; /* Table-like background */
+    border-radius: 10px;
+    overflow-x: auto; /* For responsiveness like tables */
+    padding: 20px; /* Padding inside the list container */
+    margin: 0 auto; /* Center the block element */
+}
+
+.booking-card {
+    background-color: #1f1f1f; /* Same as list background for seamless look */
+    padding: 12px 15px; /* Consistent with table cell padding */
+    border-bottom: 1px solid #333; /* Separator like table rows */
+    text-align: left;
+    display: flex; /* Use flex for layout within card */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between; /* Distribute items */
+    align-items: center;
+}
+
+.booking-card:last-child {
+    border-bottom: none; /* No border for the last card */
+}
+
+.booking-card:hover {
+    background-color: #252525; /* Hover effect like table rows */
+}
+
+.booking-header {
+    display: flex;
+    flex-direction: column; /* Stack header elements */
+    align-items: flex-start;
+    margin-bottom: 0; /* No margin bottom, handled by card padding */
+    border-bottom: none; /* No border, handled by card border */
+    padding-bottom: 0;
+    flex: 1; /* Take available space */
+}
+
+.booking-header h2 {
+    color: #ff5555; /* Highlight color for movie title */
+    font-size: 1.2rem; /* Smaller font for consistency with table headers */
+    margin: 0;
+    text-transform: uppercase; /* Uppercase like table headers */
+    font-weight: bold;
+}
+
+.booking-id {
+    font-size: 0.8rem; /* Smaller font */
+    color: #aaaaaa; /* Lighter grey */
+    margin-top: 5px;
+}
+
+.booking-details {
+    flex: 2; /* Take more space for details */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px; /* Gap between detail items */
+    margin-top: 10px; /* Space from header */
+}
+
+.booking-details p {
+    font-size: 0.9rem; /* Smaller font */
+    color: #cccccc; /* Lighter grey */
+    margin-bottom: 0; /* Remove default margin */
+    flex-basis: calc(50% - 10px); /* Two columns on larger screens */
+    display: flex;
+    align-items: center;
+}
+
+.booking-details p strong {
+    color: #ffffff; /* White text */
+    display: inline-block;
+    width: 80px; /* Smaller width for labels */
+    margin-right: 5px;
+}
+
+.booking-details .total-price {
+    font-size: 1.1rem; /* Slightly smaller */
+    color: #ff5555; /* Dashboard highlight color */
+    font-weight: bold;
+    margin-top: 10px; /* Adjusted margin */
+    border-top: 1px solid #333; /* Consistent border */
+    padding-top: 10px;
+    width: 100%; /* Full width */
+    text-align: right; /* Align to right */
+}
+
+.no-bookings {
+    font-size: 1.2em;
+    color: #cccccc; /* Lighter grey */
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .my-bookings-page .container {
+        padding: 15px;
+    }
+
+    .my-bookings-page h1 {
+        font-size: 2em;
+    }
+
+    .booking-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .booking-details {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .booking-details p {
+        flex-basis: 100%; /* Single column on small screens */
+    }
+
+    .booking-details p strong {
+        width: 80px;
+    }
+
+    .booking-details .total-price {
+        text-align: left; /* Align to left on small screens */
+    }
+}

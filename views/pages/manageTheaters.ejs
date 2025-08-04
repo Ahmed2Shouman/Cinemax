@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin - Manage Theaters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/Pages/ManageMovies/style.css"> <!-- Reusing movie management style for now -->
+    <link rel="stylesheet" href="/Style/main.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <main class="admin-movies-container">
+        <h1 class="page-title">Manage Theaters</h1>
+
+        <div class="search-bar">
+            <input type="text" id="theaterSearch" placeholder="Search theaters...">
+            <button onclick="searchTheaters()"><i class="fas fa-search"></i></button>
+            <a href="/admin/add-theater" class="add-movie-btn"><i class="fas fa-plus"></i> Add Theater</a>
+        </div>
+
+        <div id="theaterCards" class="movie-cards">
+            <% if (theaters && theaters.length > 0) { %>
+                <% theaters.forEach(theater => { %>
+                    <div class="theater-card">
+                        <img src="<%= theater.image %>" alt="<%= theater.name %> Image">
+                        <div class="theater-info">
+                            <h2><%= theater.name %></h2>
+                            <p><strong>Location:</strong> <%= theater.location %></p>
+                            <p><strong>Contact:</strong> <%= theater.contact_number %></p>
+                            <div class="tags">
+                                <% if (Array.isArray(theater.features) && theater.features.length > 0) { %>
+                                    <% theater.features.forEach(function(feature) { %>
+                                        <span><%= feature %></span>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                            <div class="theater-actions">
+                                <a href="/admin/theaters/<%= theater.id %>/halls" class="manage-halls-btn"><i class="fas fa-door-open"></i> Manage Halls</a>
+                                <a href="/admin/edit-theater/<%= theater.id %>" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+                                <button onclick="deleteTheater('<%= theater.id %>')" class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="no-movies">No theaters found.</p>
+            <% } %>
+        </div>
+    </main>
+
+    <script src="/Scripts/main.js"></script>
+    <script src="/Scripts/manageTheaters.js"></script>
+    <%- include('../partials/cr') %>
+</body>
+</html>

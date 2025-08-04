@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Book/book.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('../partials/navbar') %>
+
+    <!-- Top image -->
+    <div class="top" style="background-image: linear-gradient(to bottom, transparent, black), url('<%= movie.banner_url %>');">
+        <div class="details" id="movie-details" data-movie-id="<%= movie.id %>">
+            <h1><%= movie.title %></h1>
+            <div class="MD">
+                <h6><i class="fas fa-calendar-alt"></i> <%= movie.year || "2025" %></h6>
+                <h6><i class="fas fa-clock"></i> <%= movie.duration %></h6>
+                <h6><i class="fas fa-star"></i> <%= movie.rating %></h6>
+            </div>
+            <p><%= movie.description %></p>
+        </div>
+    </div>
+
+    <div class="booking-container">
+        <div class="selection-area">
+            <div class="selection-grid">
+                <!-- Select Theater -->
+                <div class="selection-box">
+                    <h1>Select Theater</h1>
+                    <select id="theater-select" class="btn" onchange="theaterSelected()">
+                        <option value="" disabled selected>Choose a theater</option>
+                        <% theaters.forEach(theater => { %>
+                            <option value="<%= theater.id %>"><%= theater.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <!-- Select Feature -->
+                <div id="feature-selection" class="selection-box">
+                    <h1>Select Feature</h1>
+                    <select id="feature-options" class="btn" onchange="featureSelected()">
+                        <!-- Features will be populated by JS -->
+                    </select>
+                </div>
+            </div>
+            <div class="selection-grid">
+                <!-- Select Date -->
+                <div id="date-selection" class="selection-box">
+                    <h1>Select Date</h1>
+                    <select id="date-options" class="btn" onchange="dateSelected()">
+                        <!-- Dates will be populated by JS -->
+                    </select>
+                </div>
+
+                <!-- Select Time -->
+                <div id="time-selection" class="selection-box">
+                    <h1>Select Time</h1>
+                    <select id="time-options" class="btn" onchange="timeSelected()">
+                        <!-- Times will be populated by JS -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seat Selection -->
+        <div id="seat-selection" class="seat-select" style="display: none;">
+            <h1>Select Seats</h1>
+            <h2 class="Screen">Screen</h2>
+            <div class="seat-map">
+                <div class="seat-row">
+                    <h3 class="row-label">A</h3>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="A1" onclick="toggleSeatSelection(this)">1</button><button class="seat" data-seat="A2" onclick="toggleSeatSelection(this)">2</button><button class="seat" data-seat="A3" onclick="toggleSeatSelection(this)">3</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="A4" onclick="toggleSeatSelection(this)">4</button><button class="seat" data-seat="A5" onclick="toggleSeatSelection(this)">5</button><button class="seat" data-seat="A6" onclick="toggleSeatSelection(this)">6</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="A7" onclick="toggleSeatSelection(this)">7</button><button class="seat" data-seat="A8" onclick="toggleSeatSelection(this)">8</button><button class="seat" data-seat="A9" onclick="toggleSeatSelection(this)">9</button>
+                    </div>
+                </div>
+                <div class="seat-row">
+                    <h3 class="row-label">B</h3>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="B1" onclick="toggleSeatSelection(this)">1</button><button class="seat" data-seat="B2" onclick="toggleSeatSelection(this)">2</button><button class="seat" data-seat="B3" onclick="toggleSeatSelection(this)">3</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="B4" onclick="toggleSeatSelection(this)">4</button><button class="seat" data-seat="B5" onclick="toggleSeatSelection(this)">5</button><button class="seat" data-seat="B6" onclick="toggleSeatSelection(this)">6</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="B7" onclick="toggleSeatSelection(this)">7</button><button class="seat" data-seat="B8" onclick="toggleSeatSelection(this)">8</button><button class="seat" data-seat="B9" onclick="toggleSeatSelection(this)">9</button>
+                    </div>
+                </div>
+                <div class="seat-row">
+                    <h3 class="row-label">C</h3>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="C1" onclick="toggleSeatSelection(this)">1</button><button class="seat" data-seat="C2" onclick="toggleSeatSelection(this)">2</button><button class="seat" data-seat="C3" onclick="toggleSeatSelection(this)">3</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="C4" onclick="toggleSeatSelection(this)">4</button><button class="seat" data-seat="C5" onclick="toggleSeatSelection(this)">5</button><button class="seat" data-seat="C6" onclick="toggleSeatSelection(this)">6</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="C7" onclick="toggleSeatSelection(this)">7</button><button class="seat" data-seat="C8" onclick="toggleSeatSelection(this)">8</button><button class="seat" data-seat="C9" onclick="toggleSeatSelection(this)">9</button>
+                    </div>
+                </div>
+                <div class="seat-row">
+                    <h3 class="row-label">D</h3>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="D1" onclick="toggleSeatSelection(this)">1</button><button class="seat" data-seat="D2" onclick="toggleSeatSelection(this)">2</button><button class="seat" data-seat="D3" onclick="toggleSeatSelection(this)">3</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="D4" onclick="toggleSeatSelection(this)">4</button><button class="seat" data-seat="D5" onclick="toggleSeatSelection(this)">5</button><button class="seat" data-seat="D6" onclick="toggleSeatSelection(this)">6</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="D7" onclick="toggleSeatSelection(this)">7</button><button class="seat" data-seat="D8" onclick="toggleSeatSelection(this)">8</button><button class="seat" data-seat="D9" onclick="toggleSeatSelection(this)">9</button>
+                    </div>
+                </div>
+                <div class="seat-row">
+                    <h3 class="row-label">E</h3>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="E1" onclick="toggleSeatSelection(this)">1</button><button class="seat" data-seat="E2" onclick="toggleSeatSelection(this)">2</button><button class="seat" data-seat="E3" onclick="toggleSeatSelection(this)">3</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="E4" onclick="toggleSeatSelection(this)">4</button><button class="seat" data-seat="E5" onclick="toggleSeatSelection(this)">5</button><button class="seat" data-seat="E6" onclick="toggleSeatSelection(this)">6</button>
+                    </div>
+                    <div class="seat-group">
+                        <button class="seat" data-seat="E7" onclick="toggleSeatSelection(this)">7</button><button class="seat" data-seat="E8" onclick="toggleSeatSelection(this)">8</button><button class="seat" data-seat="E9" onclick="toggleSeatSelection(this)">9</button>
+                    </div>
+                </div>
+            </div>
+            <div class="color-code">
+                <div class="legend">
+                    <div class="line"><div class="legend-box available"></div> <h3>Available</h3></div>
+                    <div class="line"><div class="legend-box selected-box"></div> <h3>Selected</h3></div>
+                    <div class="line"><div class="legend-box taken"></div> <h3>Taken</h3></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="booking-summary">
+            <h2>Booking Summary</h2>
+            <p><strong>Movie</strong> <span class="summary-movie"><%= movie.title %></span></p>
+            <div id="summary">
+                <p><strong>Theater</strong> <span class="summary-theater">No theater selected</span></p>
+                <p><strong>Feature</strong> <span class="summary-feature">No feature selected</span></p>
+                <p><strong>Date</strong> <span class="summary-date">No date selected</span></p>
+                <p><strong>Time</strong> <span class="summary-time">No time selected</span></p>
+                <p><strong>Seats</strong> <span class="summary-seats">No seats selected</span></p>
+                <button class="confirm-btn disabled">Select a show and at least one seat</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/book.js"></script>
+    <script src="/Scripts/main.js"></script>
+
+    <% include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,262 @@
+.top {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 0;
+    height: 100vh;
+    transition: background-image 1s ease-in-out;
+    padding: 50px;
+}
+
+.details {
+    position: absolute;
+    bottom: 100px;
+}
+
+.MD {
+    display: flex;
+    gap: 1rem;
+}
+
+.MD h6 {
+    font-size: 1.2rem;
+}
+
+.top h1 {
+    font-size: 5rem;
+    margin: 2rem 0;
+}
+
+.top p {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    max-width: 700px;
+    padding-right: 20px;
+}
+
+.selection-area {
+    background-color: #1a1d24;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.selection-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.selection-box h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
+}
+
+.btn {
+    background-color: #2b2f3a;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+    text-align: left;
+}
+
+.btn:hover {
+    background-color: #3a3f4d;
+    color: white;
+}
+
+.selected {
+    background-color: #d33b2d;
+}
+
+.seat-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+.seat-select .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seat-select h2{
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    padding: 0.8rem 2rem;
+    width: 50%;
+    text-align: center;
+    background-color: #2b2f3a;
+    border-radius: 1rem;
+    justify-self: center;
+}
+
+.seat-select h1{
+    justify-self: center;
+}
+
+.seat {
+    background-color: #a6a6a6ff;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.seat-group {
+    display: flex;
+    gap: 5px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend .line {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.legend-box {
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.legend-box.available {
+    background-color: #a6a6a6ff;
+}
+
+.legend-box.selected-box {
+    background-color: #e74c3c;
+}
+
+.legend-box.taken {
+    background-color: #555b6e;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.booking-summary {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 23rem;
+    max-width: 50rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: 20px auto;
+}
+
+.booking-summary h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.booking-summary p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.booking-summary span {
+    float: right;
+}
+
+.confirm-btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.disabled {
+    background-color: #1e293b;
+    cursor: not-allowed;
+}
+
+.seat.taken {
+    background-color: #555b6e;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.selection-box select {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .top {
+        padding: 30px;
+        height: 80vh;
+    }
+
+    .details {
+        bottom: 150px;
+    }
+
+    .top h1 {
+        font-size: 3rem;
+    }
+
+    .top p {
+        font-size: 1.2rem;
+    }
+
+    .selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seat-group button {
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.7rem;
+    }
+}

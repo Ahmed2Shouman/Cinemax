@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/Pages/ManageMovies/style.css">
+    <link rel="stylesheet" href="/Style/main.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <main class="admin-movies-container">
+        <h1 class="page-title">Manage Movies</h1>
+
+        <div class="search-bar">
+            <input type="text" id="movieSearch" placeholder="Search movies...">
+            <button onclick="searchMovies()"><i class="fas fa-search"></i></button>
+            <a href="/admin/add-movie" class="add-movie-btn"><i class="fas fa-plus"></i> Add Movie</a>
+        </div>
+
+        <div id="movieCards" class="movie-cards">
+            <% if (movies && movies.length > 0) { %>
+                <% movies.forEach(movie => { %>
+                    <div class="movie-card">
+                        <img src="<%= movie.poster_url %>" alt="<%= movie.title %> Poster">
+                        <div class="movie-info">
+                            <h2><%= movie.title %></h2>
+                            <p><strong>Genre:</strong> <%= movie.genre %></p>
+                            <p><strong>Rating:</strong> <%= movie.rating %></p>
+                            <div class="movie-actions">
+                                <a href="/admin/edit-movie/<%= movie.id %>" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+                                <button onclick="deleteMovie('<%= movie.id %>')" class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="no-movies">No movies found.</p>
+            <% } %>
+        </div>
+    </main>
+
+    <script src="/Scripts/main.js"></script>
+    <script src="/Scripts/manageMovies.js"></script>
+    <%- include('../partials/cr') %>
+</body>
+</html>

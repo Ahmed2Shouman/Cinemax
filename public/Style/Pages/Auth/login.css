@@ -1,0 +1,152 @@
+.login-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding:50px 20px;
+}
+
+.login-form {
+    background-color: #111827;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: left;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1f2937;
+    color: white;
+    margin-top: 5px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    color: #e53e3e;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin: 20px 0;
+}
+
+.divider hr {
+    flex: 1;
+    height: 1px;
+    background-color: #333;
+    border: none;
+}
+
+.divider span {
+    margin: 0 10px;
+    white-space: nowrap;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-outline {
+    flex: 1;
+    border: 1px solid #333;
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-outline i {
+    margin-right: 8px;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #e53e3e;
+    text-decoration: none;
+}
+
+.login-container p {
+    margin-bottom: 20px;
+    color: grey;
+}
+
+.login-container h2 {
+    margin: 10px 0;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Make space for the icon */
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #aaa;
+}

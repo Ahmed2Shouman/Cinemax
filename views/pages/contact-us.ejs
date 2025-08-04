@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Help/contact-us.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <div class="contact-us-container">
+        <div class="contact-card">
+          <h1 class="contact-title">Contact Us</h1>
+          <p class="contact-subtitle">We’d love to hear from you. Fill out the form below to get in touch.</p>
+          <form action="/submit-contact" method="POST" class="contact-form">
+            <div class="input-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="sendMessage()">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+            <h2>Our Contact Information</h2>
+            <p><i class="fas fa-phone"></i> Phone: +123 456 7890</p>
+            <p><i class="fas fa-envelope"></i> Email: help@cinemax.com </p>
+        </div>
+    </div>
+    <script src="/Scripts/main.js"></script>
+    <script>
+        function sendMessage () {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                console.log('Message Details:', { name, email, message });
+                alert('Message sent successfully!');
+            } else {
+                return;
+            }
+        }
+    </script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin - Manage Bookings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/tables.css">
+    <link rel="stylesheet" href="/Style/main.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <main class="dashboard-container">
+        <h1 class="dashboard-title">Manage Bookings</h1>
+
+        <div class="filter-bar">
+            <form action="/admin/bookings" method="GET" id="filterForm">
+                <select name="movieName" onchange="this.form.submit()">
+                    <option value="">All Movies</option>
+                    <% movies.forEach(movie => { %>
+                        <option value="<%= movie.title %>" <%= filters.movieName === movie.title ? 'selected' : '' %>><%= movie.title %></option>
+                    <% }) %>
+                </select>
+                <select name="theaterName" onchange="this.form.submit()">
+                    <option value="">All Theaters</option>
+                    <% theaters.forEach(theater => { %>
+                        <option value="<%= theater.name %>" <%= filters.theaterName === theater.name ? 'selected' : '' %>><%= theater.name %></option>
+                    <% }) %>
+                </select>
+                <select name="date" onchange="this.form.submit()">
+                    <option value="">All Dates</option>
+                    <% dates.forEach(date => { %>
+                        <option value="<%= date %>" <%= filters.date === date ? 'selected' : '' %>><%= date %></option>
+                    <% }) %>
+                </select>
+                <select name="time" onchange="this.form.submit()">
+                    <option value="">All Times</option>
+                    <% times.forEach(time => { %>
+                        <option value="<%= time %>" <%= filters.time === time ? 'selected' : '' %>><%= time %></option>
+                    <% }) %>
+                </select>
+                <select name="feature" onchange="this.form.submit()">
+                    <option value="">All Features</option>
+                    <% features.forEach(feature => { %>
+                        <option value="<%= feature %>" <%= filters.feature === feature ? 'selected' : '' %>><%= feature %></option>
+                    <% }) %>
+                </select>
+                <select name="hallName" onchange="this.form.submit()">
+                    <option value="">All Halls</option>
+                    <% halls.forEach(hall => { %>
+                        <option value="<%= hall %>" <%= filters.hallName === hall ? 'selected' : '' %>><%= hall %></option>
+                    <% }) %>
+                </select>
+                <input type="text" name="username" placeholder="Search by username" value="<%= filters.username %>" onchange="this.form.submit()">
+            </form>
+        </div>
+
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Theater</th>
+                        <th>Movie Name</th>
+                        <th>Show Date</th>
+                        <th>Show Time</th>
+                        <th>Username</th>
+                        <th>Seats</th>
+                        <th>Hall</th>
+                        <th>Feature</th>
+                        <th>Total Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingsTable">
+                    <% if (bookings && bookings.length > 0) { %>
+                        <% bookings.forEach(booking => { %>
+                            <tr>
+                                <td><%= booking.theater_name %></td>
+                                <td><%= booking.movie_title %></td>
+                                <td><%= booking.formatted_show_date %></td>
+                                <td><%= booking.formatted_show_time %></td>
+                                <td><%= booking.username %></td>
+                                <td><%= booking.seats.join(', ') %></td>
+                                <td><%= booking.hall_name %></td>
+                                <td><%= booking.feature %></td>
+                                <td>$<%= booking.total_price.toFixed(2) %></td>
+                                <td>
+                                    <button onclick="deleteBooking('<%= booking.id %>')" class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="9" class="no-results">No bookings found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="/Scripts/main.js"></script>
+    <script src="/Scripts/manageBookings.js"></script>
+    <%- include('../partials/cr') %>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Show</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/forms.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Edit Show</h1>
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+        <form id="editShowForm">
+            <input type="hidden" id="show_id" value="<%= show.id %>">
+            
+            <div class="form-group">
+                <label for="theater_id">Theater:</label>
+                <select id="theater_id" name="theater_id" required>
+                    <option value="">Select a Theater</option>
+                    <% theaters.forEach(theater => { %>
+                        <option value="<%= theater.id %>" <%= hall.theater_id == theater.id ? 'selected' : '' %>><%= theater.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hall_id">Hall:</label>
+                <select id="hall_id" name="hall_id" required>
+                    <option value="">Select a Hall</option>
+                    <% halls.forEach(hall => { %>
+                        <option value="<%= hall.id %>" <%= show.hall_id == hall.id ? 'selected' : '' %>><%= hall.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="movie_id">Movie:</label>
+                <select id="movie_id" name="movie_id" required>
+                    <option value="">Select a Movie</option>
+                    <% movies.forEach(movie => { %>
+                        <option value="<%= movie.id %>" <%= show.movie_id == movie.id ? 'selected' : '' %>><%= movie.title %> (<%= movie.duration %>)</option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="show_date">Show Date:</label>
+                <input type="date" id="show_date" name="show_date" value="<%= show.show_date.toISOString().substring(0, 10) %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="start_time">Start Time:</label>
+                <input type="time" id="start_time" name="start_time" value="<%= show.start_time.substring(0, 5) %>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="feature">Feature:</label>
+                <input type="text" id="feature" name="feature" value="<%= show.feature || 'N/A' %>" readonly>
+            </div>
+
+            <button type="submit" class="btn">Update Show</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const theaterSelect = document.getElementById('theater_id');
+            const hallSelect = document.getElementById('hall_id');
+
+            theaterSelect.addEventListener('change', async () => {
+                const theaterId = theaterSelect.value;
+                hallSelect.innerHTML = '<option value="">Loading halls...</option>';
+
+                if (theaterId) {
+                    try {
+                        const response = await fetch(`/admin/theaters/${theaterId}/halls`);
+                        const halls = await response.json();
+                        
+                        hallSelect.innerHTML = '<option value="">Select a Hall</option>';
+                        halls.forEach(hall => {
+                            const option = document.createElement('option');
+                            option.value = hall.id;
+                            option.textContent = hall.name;
+                            hallSelect.appendChild(option);
+                        });
+                    } catch (error) {
+                        console.error('Error fetching halls:', error);
+                        hallSelect.innerHTML = '<option value="">Failed to load halls</option>';
+                    }
+                } else {
+                    hallSelect.innerHTML = '<option value="">Select a theater first</option>';
+                }
+            });
+
+            const editShowForm = document.getElementById('editShowForm');
+
+            editShowForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const show_id = document.getElementById('show_id').value;
+                const hall_id = document.getElementById('hall_id').value;
+                const movie_id = document.getElementById('movie_id').value;
+                const show_date = document.getElementById('show_date').value;
+                const start_time = document.getElementById('start_time').value;
+                const feature = document.getElementById('feature').value;
+
+                try {
+                    const response = await fetch(`/admin/edit-show/${show_id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ hall_id, movie_id, show_date, start_time, feature }),
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert(result.message);
+                        window.location.href = '/admin/shows'; // Redirect to manage shows page
+                    } else {
+                        alert(`Error: ${result.message}`);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An unexpected error occurred.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

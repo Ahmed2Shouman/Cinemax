@@ -1,0 +1,60 @@
+.profile-section {
+    padding: 50px 0;
+    background-color: black; /* Changed to match site background */
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profile-container {
+    background-color: #111; /* Darker background, similar to movie/theater cards */
+    padding: 30px;
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: white; /* Default text color for container */
+}
+
+.profile-container h1 {
+    color: #e53e3e; /* Accent color for heading */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.profile-details p {
+    font-size: 1.1em;
+    color: #ccc; /* Lighter grey for details text */
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #222; /* Darker background for detail rows */
+    border-radius: 5px;
+    text-align: left;
+}
+
+.profile-details p strong {
+    color: white; /* White for labels */
+    display: inline-block;
+    width: 120px;
+}
+
+.profile-actions {
+    margin-top: 30px;
+}
+
+.profile-actions .btn {
+    display: inline-block;
+    background-color: #e53e3e; /* Site accent color for buttons */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions .btn:hover {
+    background-color: #cc3a32; /* Slightly darker red on hover */
+}

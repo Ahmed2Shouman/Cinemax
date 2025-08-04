@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Book/book.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="booking-container">
+        <h1>Checkout</h1>
+        <% if (typeof bookingDetails !== 'undefined' && bookingDetails) { %>
+            <div class="booking-summary" data-booking-details='<%- JSON.stringify(bookingDetails) %>'>
+                <h2>Booking Summary</h2>
+                <p><strong>Movie:</strong> <span id="movie-title"><%= bookingDetails.movieTitle %></span></p>
+                <p><strong>Theater:</strong> <span id="theater-name"><%= bookingDetails.theaterName %></span></p>
+                <p><strong>Date:</strong> <span id="show-date"><%= bookingDetails.showDate %></span></p>
+                <p><strong>Time:</strong> <span id="show-time"><%= bookingDetails.showTime %></span></p>
+                <p><strong>Seats:</strong></p>
+                <ul id="seat-list">
+                    <% bookingDetails.seats.forEach(seat => { %>
+                        <li>Seat <%= seat.seatNumber %> - $<%= seat.price.toFixed(2) %></li>
+                    <% }); %>
+                </ul>
+                <p><strong>Total Price:</strong> $<span id="total-price"><%= bookingDetails.totalPrice.toFixed(2) %></span></p>
+                <button id="confirm-booking-btn" class="confirm-btn">Confirm Booking</button>
+            </div>
+        <% } else { %>
+            <div class="booking-summary">
+                <h2>No booking details found.</h2>
+                <p>Please go back and select a show and seats.</p>
+                <a href="/" class="btn">Back to Home</a>
+            </div>
+        <% } %>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const confirmBtn = document.getElementById('confirm-booking-btn');
+            const bookingSummaryEl = document.querySelector('.booking-summary');
+
+            if (confirmBtn && bookingSummaryEl) {
+                const bookingDetailsJSON = bookingSummaryEl.getAttribute('data-booking-details');
+                const bookingDetails = bookingDetailsJSON ? JSON.parse(bookingDetailsJSON) : null;
+
+                confirmBtn.addEventListener('click', async () => {
+                    if (!bookingDetails) {
+                        alert('No booking details to confirm.');
+                        return;
+                    }
+                    try {
+                        const response = await fetch('/api/bookings', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                showId: bookingDetails.showId,
+                                seats: bookingDetails.seats.map(s => s.seatNumber)
+                            })
+                        });
+
+                        if (response.ok) {
+                            window.location.href = '/booking-successful';
+                        } else {
+                            const error = await response.json();
+                            if (response.status === 401) {
+                                alert(error.message);
+                                window.location.href = '/login';
+                            } else {
+                                alert('Failed to confirm booking. Please try again.');
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error confirming booking:', error);
+                        alert('An error occurred while confirming your booking. Please try again.');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/Theaters/theaters.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <main class="main-column">
+        <div class="header">
+            <h2>Our Theaters</h2>
+        </div>
+
+        <div class="cards-grid">
+            <% if (theaters && theaters.length > 0) { %>
+                <% theaters.forEach(function(theater) { %>
+                    <div class="theater-card">
+                        <img src="<%= theater.image %>" alt="<%= theater.name %>">
+                        <div class="theater-info">
+                            <h3><%= theater.name %></h3>
+                            <h6><i class="fas fa-location-dot"></i> <%= theater.location %></h6>
+                            <p>Contact: <%= theater.contact_number %></p>
+                            <div class="tags">
+                                <% if (Array.isArray(theater.features) && theater.features.length > 0) { %>
+                                    <% theater.features.forEach(function(feature) { %>
+                                        <span><%= feature %></span>
+                                    <% }); %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No theaters available.</p>
+            <% } %>
+        </div>
+    </main>
+
+<script src="/Scripts/main.js"></script>
+<%- include('../partials/footer') %>
+</body>
+</html>

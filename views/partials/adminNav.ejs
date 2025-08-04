@@ -1,0 +1,35 @@
+<nav>
+    <div class="nav-container">
+        <ul class="nav-links left">
+            <a href="/admin" class="logo">Cinemax</a>
+            <li><a href="/" class="hide-on-mobile">Home</a></li>
+            <li><a href="/admin/movies" class="hide-on-mobile">Movies</a></li>
+            <li><a href="/admin/theaters" class="hide-on-mobile">Theaters</a></li>
+            <li><a href="/admin/halls" class="hide-on-mobile">Halls</a></li>
+            <li><a href="/admin/shows" class="hide-on-mobile">Shows</a></li>
+            <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
+            <li><a href="/admin/users" class="hide-on-mobile">Users</a></li>
+            <% } %>
+            <li><a href="/admin/bookings" class="hide-on-mobile">Bookings</a></li>
+        </ul>
+        <ul class="nav-links right">
+            <li><a href="/auth/logout" class="nav-btn hide-on-mobile">Logout</a></li>
+            <li onclick=toggleSidebar() class="hide show-on-mobile"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </div>
+    <div class="sidebar hide-on-mobile">
+        <ul>
+            <li onclick=toggleSidebar()><a href="#"><i class="fas fa-times"></i></a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/movies">Movies</a></li>
+            <li><a href="/admin/theaters">Theaters</a></li>
+            <li><a href="/admin/halls">Halls</a></li>
+            <li><a href="/admin/shows">Shows</a></li>
+            <% if (user.role === 'owner' || user.role === 'supervisor' || user.role === 'admin') { %>
+            <li><a href="/admin/users">Users</a></li>
+            <% } %>
+            <li><a href="/admin/bookings">Bookings</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>

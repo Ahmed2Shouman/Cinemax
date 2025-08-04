@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../../Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/movie-form.css">
+</head>
+<body>
+  <%- include('../partials/adminNav') %>
+
+  <main class="form-container">
+    <h1 class="page-title">Edit Movie</h1>
+    <form action="/admin/edit-movie/<%= movie.id %>" method="POST" class="form">
+      <div class="form-group">
+        <label for="title">Movie Title</label>
+        <input type="text" id="title" name="title" value="<%= movie.title %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input type="text" id="genre" name="genre" value="<%= movie.genre %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <input type="text" id="rating" name="rating" value="<%= movie.rating %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" value="<%= movie.duration %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="release_date">Release Date</label>
+        <input type="date" id="release_date" name="release_date" value="<%= movie.release_date ? movie.release_date.toISOString().substring(0,10) : '' %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="poster">Poster Image URL</label>
+        <input type="url" id="poster" name="poster" value="<%= movie.poster_url %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="banner">Banner Image URL</label>
+        <input type="url" id="banner" name="banner" value="<%= movie.banner_url %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="trailer">Trailer URL</label>
+        <input type="url" id="trailer" name="trailer" value="<%= movie.trailer %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required><%= movie.description %></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update Movie</button>
+    </form>
+  </main>
+
+  <%- include('../partials/cr') %>
+  <script src="/Scripts/main.js"></script>
+</body>
+</html>

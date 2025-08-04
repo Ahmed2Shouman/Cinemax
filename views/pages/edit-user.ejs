@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/Style/Pages/admin/forms.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Edit User</h1>
+        <form action="/admin/users/edit/<%= userToEdit.id %>" method="POST">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" value="<%= userToEdit.first_name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" value="<%= userToEdit.last_name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="<%= userToEdit.username %>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= userToEdit.email %>" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role">
+                    <% if (user.role === 'owner') { %>
+                        <option value="supervisor" <%= userToEdit.role === 'supervisor' ? 'selected' : '' %>>Supervisor</option>
+                        <option value="admin" <%= userToEdit.role === 'admin' ? 'selected' : '' %>>Admin</option>
+                    <% } else if (user.role === 'supervisor') { %>
+                        <option value="admin" <%= userToEdit.role === 'admin' ? 'selected' : '' %>>Admin</option>
+                    <% } %>
+                </select>
+            </div>
+            <button type="submit" class="btn">Update User</button>
+        </form>
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

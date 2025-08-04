@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Admin - Manage Halls</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Style/Pages/ManageMovies/style.css">
+    <link rel="stylesheet" href="/Style/main.css">
+</head>
+<body>
+    <%- include('../partials/adminNav') %>
+
+    <main class="admin-movies-container">
+        <h1 class="page-title">Manage Halls for <%= theater.name %></h1>
+
+        <div class="search-bar">
+            <input type="text" id="hallSearch" placeholder="Search halls...">
+            <button onclick="searchHalls()"><i class="fas fa-search"></i></button>
+            <a href="/admin/theaters/<%= theater.id %>/add-hall" class="add-movie-btn"><i class="fas fa-plus"></i> Add Hall</a>
+        </div>
+
+        <div id="hallCards" class="movie-cards">
+            <% if (halls && halls.length > 0) { %>
+                <% halls.forEach(hall => { %>
+                    <div class="hall-card">
+                        <div class="movie-info">
+                            <h2><%= hall.name %></h2>
+                            <p><strong>Rows:</strong> <%= hall.seat_rows %></p>
+                            <p><strong>Columns:</strong> <%= hall.seat_columns %></p>
+                            <div class="tags">
+                                <% if (hall.features) { %>
+                                    <span><%= hall.features %></span>
+                                <% } %>
+                            </div>
+                            <div class="movie-actions">
+                                <a href="/admin/halls/<%= hall.id %>/edit" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
+                                <button onclick="deleteHall('<%= hall.id %>')" class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="no-movies">No halls found for this theater.</p>
+            <% } %>
+        </div>
+    </main>
+
+    <script src="/Scripts/main.js"></script>
+    <script src="/Scripts/manageHalls.js"></script>
+    <%- include('../partials/cr') %>
+</body>
+</html>
